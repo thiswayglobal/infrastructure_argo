@@ -11,7 +11,6 @@ local hashicorp = import '../libs/hashicorp.libsonnet';
 local e = import '../libs/env.libsonnet';
 
 
-e.notDev(secrets.getSealedSecret('ecr', wave=21)) +
 [
   argo.app(
     'misc',
