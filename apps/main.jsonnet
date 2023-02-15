@@ -225,6 +225,7 @@ local e = import '../libs/env.libsonnet';
                     'apps/prometheus-crds',
                     replace=true,
                     applyOutOfSyncOnly=true,
+                    targetRevision=argo.config.argo_branch,
                     wave=10),
 
   argo.app_helm(
