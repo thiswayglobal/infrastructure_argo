@@ -284,6 +284,14 @@ local e = import '../libs/env.libsonnet';
     ],
   ),
 
+  argo.appKustomize('secrets',
+                    'secrets',
+                    argo.config.argo_repo,
+                    'secrets',
+                    replace=true,
+                    targetRevision=argo.config.argo_branch,
+                    wave=10),
+
 
   argo.app('demo-app', 'demo-app', 'demo-app', wave=30),
 
