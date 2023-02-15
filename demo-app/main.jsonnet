@@ -1,4 +1,5 @@
 local argo = import '../libs/argo.libsonnet';
+local hashicorp = import '../libs/hashicorp.libsonnet';
 local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
 
