@@ -7,6 +7,8 @@ local env = std.parseYaml(importstr '../env.yaml');
   then std.parseJson(terraform_config) { env: env[std.parseJson(terraform_config).env], env_name: std.parseJson(terraform_config).env }
   else std.parseJson(std.extVar('config')),
 
+  branches:: std.parseYaml(importstr '../branches.yaml'),
+
   local _app(
     name,
     dest_namespace,
