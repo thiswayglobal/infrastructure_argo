@@ -10,7 +10,7 @@ local config = argo.config;
     'demo-app',
     [
       k8s.deployment_container(
-        argo.branches[argo.config.env.demo_app.version],
+        argo.branches.demo_app[argo.config.env.demo_app.version],
         'demo-app',
         [k8s.deployment_container_port('http', 80, 'TCP')],
         k8s.deployment_container_http_probe('http')
