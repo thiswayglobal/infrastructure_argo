@@ -71,14 +71,6 @@ local k8s = import '../libs/k8s.libsonnet';
       },
       outputs: outputs,
       variables: vars + [
-        /*
-        {
-          key: 'HASH',
-          value: env['tf-modules-hashes'][path],
-          sensitive: false,
-          environmentVariable: true,
-        },
-        */
         {
           key: 'AWS_DEFAULT_REGION',
           value: region,
@@ -104,7 +96,7 @@ local k8s = import '../libs/k8s.libsonnet';
       ],
       vcs: {
         token_id: argo.config.env.terraform.token_id,
-        repo_identifier: argo.config.env.terraform.organization_Github + '/' + source,
+        repo_identifier: argo.config.env.terraform.organization + '/' + source,
         ingress_submodules: false,
         branch: 'main',
       },

@@ -6,6 +6,25 @@ local config = argo.config;
 [
   k8s.ns(argo.config.app_name, true, wave=10),
 
+  hashicorp.workspace(
+    'demo-app',
+    'demo-app-tf',
+    region=argo.config.region,
+    vars=[
+      hashicorp.var('env_name', argo.config.env_name),
+      hashicorp.var('irsa_namespace', argo.config.app_name),
+      hashicorp.var('irsa_sa', 'demo-app'),
+      hashicorp.var('irsa_cluster_name', argo.config.cluster_name),
+      hashicorp.var('irsa_oidc_url', argo.config.oidc_url),
+      hashicorp.var('irsa_oidc_arn', argo.config.oidc_arn),
+    ],
+    outputs=[
+      hashicorp.output('irsa_arn'),
+      hashicorp.output('sns_test'),
+    ],
+    wave=10,
+  ),
+
   k8s.deployment(
     'demo-app',
     [
@@ -16,6 +35,7 @@ local config = argo.config;
         k8s.deployment_container_http_probe('http')
       ),
     ],
+    sa='demo-app',
     wave=20
   ),
 
