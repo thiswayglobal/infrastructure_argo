@@ -197,7 +197,7 @@ local e = import '../libs/env.libsonnet';
     'grafana-operator',
     'https://charts.bitnami.com/bitnami',
     'grafana-operator',
-    '2.5.4',
+    '2.7.15',
     helm_params=[
       argo.var('operator.scanAllNamespaces', 'true'),
       argo.var('operator.prometheus.serviceMonitor.enabled', 'false'),
