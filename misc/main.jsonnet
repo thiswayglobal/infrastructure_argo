@@ -9,7 +9,7 @@ local all_domains = argo.config.env.domains + ['grafana.' + argo.config.domain];
 [
   cm.selfSignedClusterIssuer(wave=20),
 
-  istio.ingress(all_domains, '32766', waf_arn=argo.config.waf_arn, wave=10),
+  istio.ingress(all_domains, '32766', wave=10),
   istio.gw('http', all_domains, 'istio-system', wave=30),
   istio.remoteIpFixFilter('istio-system'),
 ]
