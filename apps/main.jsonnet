@@ -192,5 +192,95 @@ local e = import '../libs/env.libsonnet';
     wave=20
   ),
 
+  argo.app_helm(
+    'grafana-operator',
+    'grafana-operator',
+    'https://charts.bitnami.com/bitnami',
+    'grafana-operator',
+    '2.5.4',
+    helm_params=[
+      argo.var('operator.scanAllNamespaces', 'true'),
+      argo.var('operator.prometheus.serviceMonitor.enabled', 'false'),
+      argo.var('grafana.enabled', 'false'),
+      argo.var('operator.watchNamespace', 'grafana'),
+    ],
+    wave=10
+  ),
+  argo.app(
+    'grafana',
+    'grafana',
+    'grafana',
+    wave=20,
+    vars=[
+      argo.var('grafana_irsa_arn', argo.config.grafana_irsa_arn),
+      argo.var('amp_url', argo.config.amp_url),
+      argo.var('region', argo.config.region),
+      argo.var('grafana_domain', 'grafana.' + argo.config.domain),
+    ]
+  ),
+
+  argo.appKustomize('prometheus-operator-crds',
+                    'prometheus',
+                    argo.config.argo_repo,
+                    'apps/prometheus-crds',
+                    replace=true,
+                    applyOutOfSyncOnly=true,
+                    wave=10),
+
+  argo.app_helm(
+    'prometheus-operator',
+    'prometheus',
+    'https://prometheus-community.github.io/helm-charts',
+    'kube-prometheus-stack',
+    '35.0.3',
+    wave=20,
+    helm_params=[
+      argo.var('kubeApiServer.enabled', 'false'),
+      argo.var('prometheus.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn', argo.config.prometheus_irsa_arn),
+      argo.var('prometheus.serviceAccount.name', 'prometheus-server'),
+      argo.var('grafana.enabled', 'false'),
+      argo.var('alertmanager.enabled', 'false'),
+      argo.var('prometheus.prometheusSpec.remoteWrite[0].url', argo.config.amp_url + 'api/v1/remote_write'),
+      argo.var('prometheus.prometheusSpec.remoteWrite[0].sigv4.region', argo.config.region),
+      argo.var('prometheus.prometheusSpec.remoteWrite[0].writeRelabelConfigs[0].targetLabel', 'cluster_name'),
+      argo.var('prometheus.prometheusSpec.remoteWrite[0].writeRelabelConfigs[0].replacement', argo.config.cluster_name),
+      argo.var('prometheus.prometheusSpec.retention', '3h'),
+
+      argo.var('prometheus.prometheusSpec.resources.requests.cpu', '10m'),
+      argo.var('prometheus.prometheusSpec.resources.requests.memory', '128Mi'),
+
+      argo.var('prometheusOperator.prometheusConfigReloader.resources.requests.cpu', '10m'),
+      //argo.var("prometheusOperator.prometheusConfigReloader.resources.requests.memory", "128Mi"),
+
+      argo.var('prometheusOperator.admissionWebhooks.patch.resources.requests.cpu', '10m'),
+      argo.var('prometheusOperator.admissionWebhooks.patch.resources.requests.memory', '128Mi'),
+
+      argo.var('prometheusOperator.resources.requests.cpu', '10m'),
+      argo.var('prometheusOperator.resources.requests.memory', '128Mi'),
+
+      argo.var('prometheus.prometheusSpec.podMonitorSelectorNilUsesHelmValues', 'false'),
+      argo.var('prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues', 'false'),
+    ],
+    skipCrds=true,
+    selfHeal=false,
+    ignoreDifferences=[
+      {
+        group: 'admissionregistration.k8s.io',
+        kind: 'MutatingWebhookConfiguration',
+        name: 'prometheus-operator-kube-p-admission',
+        jqPathExpressions: [
+          '.webhooks[0].failurePolicy',
+        ],
+      },
+      {
+        group: 'admissionregistration.k8s.io',
+        kind: 'ValidatingWebhookConfiguration',
+        name: 'prometheus-operator-kube-p-admission',
+        jqPathExpressions: [
+          '.webhooks[0].failurePolicy',
+        ],
+      },
+    ],
+  ),
 
 ]

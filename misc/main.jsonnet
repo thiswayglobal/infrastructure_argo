@@ -4,7 +4,7 @@ local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
 local prom = import '../libs/prometheus.libsonnet';
 
-local all_domains = argo.config.env.domains;
+local all_domains = argo.config.env.domains + ['grafana.' + argo.config.domain];
 
 [
   cm.selfSignedClusterIssuer(wave=20),
