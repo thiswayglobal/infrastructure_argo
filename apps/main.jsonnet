@@ -284,13 +284,25 @@ local e = import '../libs/env.libsonnet';
     ],
   ),
 
+  argo.app_helm(
+    'terraform',
+    'terraform',
+    'https://helm.releases.hashicorp.com',
+    'terraform',
+    '1.1.2',
+    wave=20,
+    helm_params=[
+      argo.var('global.enabled', 'true'),
+    ]
+  ),
+
   argo.appKustomize('secrets',
                     'secrets',
                     argo.config.argo_repo,
                     'secrets',
                     replace=true,
                     targetRevision=argo.config.argo_branch,
-                    wave=10),
+                    wave=30),
 
 
   argo.app('demo-app', 'demo-app', 'demo-app', wave=30),
