@@ -33,7 +33,10 @@ local config = argo.config;
         argo.branches.demo_app[argo.config.env.demo_app.environments[argo.config.app_name_short].version],
         'demo-app',
         [k8s.deployment_container_port('http', 80, 'TCP')],
-        k8s.deployment_container_http_probe('http')
+        k8s.deployment_container_http_probe('http'),
+        env=[
+          k8s.secretVar('SNS_TEST', argo.config.env_name + '-tf-output', 'sns_test'),
+        ],
       ),
     ],
     sa='demo-app',
