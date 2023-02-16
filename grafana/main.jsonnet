@@ -5,6 +5,7 @@ local k8s = import '../libs/k8s.libsonnet';
 local amp_url = std.extVar('amp_url');
 local region = std.extVar('region');
 local domain = std.extVar('grafana_domain');
+local grafana_irsa_arn = std.extVar('grafana_irsa_arn');
 
 [
   k8s.ns('grafana', true, wave=10),
@@ -15,7 +16,7 @@ local domain = std.extVar('grafana_domain');
     wave=20
   ),
 
-  g.grafana('grafana', wave=20),
+  g.grafana('grafana', irsa_arn=grafana_irsa_arn, wave=20),
   g.dataSource('amp', amp_url, region, wave=20),
 
   g.dashboard('istio-control-plane', importstr 'dashboards/istio_control_plane.libsonnet', wave=20),
