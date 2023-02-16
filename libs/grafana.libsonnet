@@ -64,6 +64,9 @@ local argo = import '../libs/argo.libsonnet';
           mode: 'console',
           level: 'error',
         },
+        server: {
+          root_url: 'https://' + argo.config.env.grafana.domain,
+        },
         'log.frontend': {
           enabled: true,
         },
