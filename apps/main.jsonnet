@@ -299,6 +299,6 @@ local e = import '../libs/env.libsonnet';
                     wave=30),
 
 
-  //argo.app('demo-app-base', 'demo-app-base', 'demo-app-base', wave=30),
+  argo.app('demo-app-base', 'demo-app-base', 'demo-app-base', wave=30),
 
 ]
