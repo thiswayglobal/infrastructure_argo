@@ -5,7 +5,10 @@ local k8s = import '../libs/k8s.libsonnet';
 local prom = import '../libs/prometheus.libsonnet';
 
 local all_domains = argo.config.env.domains + ['grafana.' + argo.config.domain];
-
+local demo_app = [
+  'demo-app-' + name + '.dev-ai4jobs.com'
+  for name in std.objectFields(argo.config.env.connectfi.environments)
+];
 [
   cm.selfSignedClusterIssuer(wave=20),
 
@@ -13,4 +16,4 @@ local all_domains = argo.config.env.domains + ['grafana.' + argo.config.domain];
   istio.gw('http', all_domains, 'istio-system', wave=30),
   istio.remoteIpFixFilter('istio-system'),
 ]
-+ istio.gws('main', all_domains, 'istio-system', wave=30)
++ istio.gws('main', all_domains + demo_app, 'istio-system', wave=30)

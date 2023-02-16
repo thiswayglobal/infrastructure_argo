@@ -8,7 +8,7 @@ local config = argo.config;
   k8s.ns(argo.config.app_name, true, wave=10),
 
   hashicorp.workspace(
-    'demo-app',
+    'demo-app-' + argo.config.app_name_short,
     'demo-app-tf',
     region=argo.config.region,
     vars=[
@@ -50,7 +50,7 @@ local config = argo.config;
   istio.virtualService(
     'demo-app',
     [istio.virtualServiceRule(['/'], 'demo-app', 80)],
-    [argo.config.env.demo_app.domain],
+    [argo.config.app_name + '.dev-ai4jobs.com'],
     wave=20
   ),
 ]
