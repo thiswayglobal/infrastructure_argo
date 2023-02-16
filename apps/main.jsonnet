@@ -211,12 +211,6 @@ local e = import '../libs/env.libsonnet';
     'grafana',
     'grafana',
     wave=20,
-    vars=[
-      argo.var('grafana_irsa_arn', argo.config.grafana_irsa_arn),
-      argo.var('amp_url', argo.config.amp_url),
-      argo.var('region', argo.config.region),
-      argo.var('grafana_domain', 'grafana.' + argo.config.domain),
-    ]
   ),
 
   argo.appKustomize('prometheus-operator-crds',

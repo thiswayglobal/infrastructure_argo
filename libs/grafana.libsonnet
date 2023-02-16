@@ -1,3 +1,5 @@
+local argo = import '../libs/argo.libsonnet';
+
 {
   local _dataSource = function(name, url, region, namespace=null, wave=null) {
     apiVersion: 'integreatly.org/v1alpha1',
@@ -33,7 +35,7 @@
   },
   dataSource:: _dataSource,
 
-  local _grafana = function(name, irsa_arn=null, namespace=null, wave=null) {
+  local _grafana = function(name, namespace=null, wave=null) {
     apiVersion: 'integreatly.org/v1alpha1',
     kind: 'Grafana',
     metadata: {
@@ -44,9 +46,9 @@
       },
     },
     spec: {
-      [if irsa_arn != null then 'serviceAccount']: {
+      [if std.objectHas(argo.config, 'grafana_irsa_arn') then 'serviceAccount']: {
         annotations: {
-          'eks.amazonaws.com/role-arn': irsa_arn,
+          'eks.amazonaws.com/role-arn': argo.config.grafana_irsa_arn,
         },
       },
       client: {
@@ -70,6 +72,18 @@
         },
         'auth.anonymous': {
           enabled: false,
+        },
+        [if std.objectHas(argo.config.env.grafana, 'github_client_id') then 'auth.github']: {
+          enabled: true,
+          allow_sign_up: true,
+          client_id: argo.config.env.grafana.github_client_id,
+          client_secret: argo.config.env.grafana.github_client_secret,
+          scopes: 'user:email,read:org',
+          auth_url: 'https://github.com/login/oauth/authorize',
+          token_url: 'https://github.com/login/oauth/access_token',
+          api_url: 'https://api.github.com/user',
+          team_ids: argo.config.env.grafana.team_ids,
+          allowed_organizations: argo.config.env.grafana.organization,
         },
       },
       service: {
