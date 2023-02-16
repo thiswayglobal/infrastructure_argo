@@ -7,7 +7,7 @@ local prom = import '../libs/prometheus.libsonnet';
 local all_domains = argo.config.env.domains + ['grafana.' + argo.config.domain];
 local demo_app = [
   'demo-app-' + name + '.dev-ai4jobs.com'
-  for name in std.objectFields(argo.config.env.connectfi.environments)
+  for name in std.objectFields(argo.config.env.demo_app.environments)
 ];
 [
   cm.selfSignedClusterIssuer(wave=20),
