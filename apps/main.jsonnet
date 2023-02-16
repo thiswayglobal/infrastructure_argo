@@ -20,8 +20,6 @@ local e = import '../libs/env.libsonnet';
     skipDryRun=true
   ),
 
-  k8s.ns('istio-ingress', istio=true, wave=30),
-
   argo.app_helm(
     'istio-base',
     'istio-system',
@@ -86,6 +84,8 @@ local e = import '../libs/env.libsonnet';
       },
     ],
   ),
+
+  k8s.ns('istio-ingress', istio=true, wave=20),
   argo.app_helm(
     'istio-gateway',
     'istio-ingress',
