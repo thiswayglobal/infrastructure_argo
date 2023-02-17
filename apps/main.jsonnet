@@ -300,6 +300,30 @@ local e = import '../libs/env.libsonnet';
     '0.4.0',
     wave=20,
   ),
+  argo.app_helm(
+    'fluentd',
+    'logging-operator',
+    'https://ot-container-kit.github.io/helm-charts/',
+    'fluentd',
+    '0.4.0',
+    wave=20,
+    helm_params=[
+      argo.var('elasticSearchHost', 'elasticsearch-master'),
+      argo.var('elasticsearch-master', 'elasticsearch-password'),
+      argo.var('indexNameStrategy', 'namespace_name'),
+      argo.var('esSecurity.enabled', 'true'),
+      argo.var('esSecurity.elasticSearchPassword', 'elasticsearch-password'),
+      argo.var('global.enabled', 'true'),
+      argo.var('global.enabled', 'true'),
+      argo.var('global.enabled', 'true'),
+      argo.var('global.enabled', 'true'),
+      argo.var('global.enabled', 'true'),
+      argo.var('global.enabled', 'true'),
+      argo.var('global.enabled', 'true'),
+      argo.var('global.enabled', 'true'),
+    ]
+  ),
+
 
   argo.appKustomize('secrets',
                     'secrets',
