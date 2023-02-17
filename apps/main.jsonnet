@@ -290,6 +290,17 @@ local e = import '../libs/env.libsonnet';
     ]
   ),
 
+  //https://github.com/kube-logging/helm-charts/blob/main/charts/logging-operator/values.yaml
+  //https://ot-logging-operator.netlify.app/docs/getting-started/installation/
+  argo.app_helm(
+    'logging-operator',
+    'logging-operator',
+    'https://ot-container-kit.github.io/helm-charts/',
+    'logging-operator',
+    '3.17.10',
+    wave=20,
+  ),
+
   argo.appKustomize('secrets',
                     'secrets',
                     argo.config.argo_repo,
