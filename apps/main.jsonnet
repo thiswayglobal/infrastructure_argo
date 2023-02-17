@@ -295,9 +295,9 @@ local e = import '../libs/env.libsonnet';
   argo.app_helm(
     'logging-operator',
     'logging-operator',
-    'https://ot-container-kit.github.io/helm-charts',
+    'https://ot-container-kit.github.io/helm-charts/',
     'logging-operator',
-    '3.17.10',
+    '0.4.0',
     wave=20,
   ),
 
