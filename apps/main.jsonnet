@@ -313,14 +313,6 @@ local e = import '../libs/env.libsonnet';
       argo.var('indexNameStrategy', 'namespace_name'),
       argo.var('esSecurity.enabled', 'true'),
       argo.var('esSecurity.elasticSearchPassword', 'elasticsearch-password'),
-      argo.var('global.enabled', 'true'),
-      argo.var('global.enabled', 'true'),
-      argo.var('global.enabled', 'true'),
-      argo.var('global.enabled', 'true'),
-      argo.var('global.enabled', 'true'),
-      argo.var('global.enabled', 'true'),
-      argo.var('global.enabled', 'true'),
-      argo.var('global.enabled', 'true'),
     ]
   ),
 
