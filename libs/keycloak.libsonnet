@@ -1,7 +1,7 @@
 local k8s = import '../libs/k8s.libsonnet';
 
 {
-  local _keycloak = function(name, db_obj, namespace=null, wave=null) [
+  local _keycloak = function(name, db_obj, wave=null) [
     k8s.secret(
       name + '-db',
       {
@@ -9,14 +9,14 @@ local k8s = import '../libs/k8s.libsonnet';
         password: db_obj.db_pass,
       },
       wave=wave,
-      namespace=namespace
+      namespace='keycloak-operator'
     ),
     {
       apiVersion: 'k8s.keycloak.org/v2alpha1',
       kind: 'Keycloak',
       metadata: {
         name: name,
-        [if namespace != null then 'namespace']: namespace,
+        namespace: 'keycloak-operator',
         [if wave != null then 'annotations']: {
           'argocd.argoproj.io/sync-wave': std.toString(wave),
         },
