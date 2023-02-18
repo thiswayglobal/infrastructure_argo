@@ -305,7 +305,7 @@ local e = import '../libs/env.libsonnet';
             Host            %s
             Port            %d
             Cloud_ID        %s
-            Cloud_Auth      %s:%s
+            Cloud_Auth      admin:admin
             Logstash_Format On
             Logstash_Prefix my-cluster
             Replace_Dots    On
@@ -316,8 +316,8 @@ local e = import '../libs/env.libsonnet';
         argo.config.es.endpoint,
         9243,
         argo.config.es.endpoint,
-        argo.config.es.user,
-        argo.config.es.pass,
+        //argo.config.es.user,
+        //argo.config.es.pass,
       ])),
     ]
   ),
