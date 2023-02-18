@@ -4,5 +4,5 @@ local k8s = import '../libs/k8s.libsonnet';
 local k = import '../libs/keycloak.libsonnet';
 
 [
-  l.keycloak('test1', argo.config.rds.keycloak),
+  k.keycloak('test1', argo.config.rds.keycloak),
 ]

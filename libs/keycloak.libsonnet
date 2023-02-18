@@ -24,6 +24,7 @@
         db: {
           vendor: 'postgres',
           host: db_obj.db_host,
+          database: db_obj.db_name,
           usernameSecret: {
             name: name + '-db',
             key: 'username',
@@ -35,6 +36,11 @@
         },
         ingress: {
           enabled: false,
+        },
+        features: {
+          disabled: [
+            'step-up-authentication',
+          ],
         },
       },
     },
