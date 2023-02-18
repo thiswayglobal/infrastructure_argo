@@ -1,3 +1,5 @@
+local k8s = import '../libs/k8s.libsonnet';
+
 {
   local _keycloak = function(name, db_obj, namespace=null, wave=null) [
     k8s.secret(
