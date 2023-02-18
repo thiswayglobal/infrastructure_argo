@@ -303,7 +303,7 @@ local e = import '../libs/env.libsonnet';
           Name            es
           Match           *
           Host            %s
-          Port            $d
+          Port            %d
           Cloud_ID        %s
           Cloud_Auth      %s:%s
           Logstash_Format On
