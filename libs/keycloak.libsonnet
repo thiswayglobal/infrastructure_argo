@@ -52,6 +52,9 @@ local k8s = import '../libs/k8s.libsonnet';
             'step-up-authentication',
           ],
         },
+        transaction: {
+          xaEnabled: false,
+        },
       },
     },
   ],
