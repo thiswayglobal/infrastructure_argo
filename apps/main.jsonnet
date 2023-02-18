@@ -300,18 +300,18 @@ local e = import '../libs/env.libsonnet';
     helm_params=[
       argo.var('config.outputs', std.format(|||
         [OUTPUT]
-          Name            es
-          Match           *
-          Host            %s
-          Port            %d
-          Cloud_ID        %s
-          Cloud_Auth      %s:%s
-          Logstash_Format On
-          Logstash_Prefix my-cluster
-          Replace_Dots    On
-          Retry_Limit     False
-          tls             On
-          tls.verify      Off
+            Name            es
+            Match           *
+            Host            %s
+            Port            %d
+            Cloud_ID        %s
+            Cloud_Auth      %s:%s
+            Logstash_Format On
+            Logstash_Prefix my-cluster
+            Replace_Dots    On
+            Retry_Limit     False
+            tls             On
+            tls.verify      Off
       |||, [
         argo.config.es.endpoint,
         9243,
