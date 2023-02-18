@@ -304,7 +304,6 @@ local e = import '../libs/env.libsonnet';
             Match           *
             Host            %s
             Port            %d
-            Cloud_ID        %s
             Cloud_Auth      admin:admin
             Logstash_Format On
             Logstash_Prefix my-cluster
