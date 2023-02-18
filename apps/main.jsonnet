@@ -291,10 +291,10 @@ local e = import '../libs/env.libsonnet';
   ),
 
   argo.app_helm(
-    'fluentd',
-    'fluentd',
+    'fluent-bit',
+    'fluent-bit',
     'https://fluent.github.io/helm-charts',
-    'fluentd',
+    'fluent-bit',
     '0.24.0',
     wave=20,
     helm_params=[
