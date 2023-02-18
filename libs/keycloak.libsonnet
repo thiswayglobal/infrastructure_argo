@@ -27,6 +27,11 @@ local k8s = import '../libs/k8s.libsonnet';
           vendor: 'postgres',
           host: db_obj.db_host,
           database: db_obj.db_name,
+          port: 5432,
+          schema: 'public',
+          poolInitialSize: 1,
+          poolMinSize: 1,
+          poolMaxSize: 100,
           usernameSecret: {
             name: name + '-db',
             key: 'username',
