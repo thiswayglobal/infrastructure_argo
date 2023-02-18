@@ -36,6 +36,9 @@ local k8s = import '../libs/k8s.libsonnet';
             key: 'password',
           },
         },
+        hostname: {
+          strict: false,
+        },
         ingress: {
           enabled: false,
         },
