@@ -32,7 +32,7 @@ local k8s = import '../libs/k8s.libsonnet';
           //poolInitialSize: 1,
           //poolMinSize: 1,
           //poolMaxSize: 100,
-          url: 'jdbc:postgresql://' + db_obj.db_host + '/' + db_obj.db_name + '?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory',
+          url: 'jdbc:postgresql://' + db_obj.db_host + '/' + db_obj.db_name + '?ssl=false',
           usernameSecret: {
             name: name + '-db',
             key: 'username',
