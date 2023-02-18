@@ -47,11 +47,13 @@ local k8s = import '../libs/k8s.libsonnet';
         ingress: {
           enabled: false,
         },
+        /*
         features: {
           disabled: [
             'step-up-authentication',
           ],
         },
+        */
         transaction: {
           xaEnabled: false,
         },
