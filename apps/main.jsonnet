@@ -306,7 +306,7 @@ local e = import '../libs/env.libsonnet';
             Port            %d
             Cloud_Auth      %s:%s
             Logstash_Format On
-            Logstash_Prefix my-cluster
+            Logstash_Prefix %s
             Replace_Dots    On
             Retry_Limit     False
             tls             On
@@ -316,6 +316,7 @@ local e = import '../libs/env.libsonnet';
         443,
         argo.config.es.user,
         argo.config.es.pass,
+        argo.config.cluster_name,
       ])),
     ]
   ),
