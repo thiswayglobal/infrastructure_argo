@@ -290,29 +290,34 @@ local e = import '../libs/env.libsonnet';
     ]
   ),
 
-  //https://github.com/kube-logging/helm-charts/blob/main/charts/logging-operator/values.yaml
-  //https://ot-logging-operator.netlify.app/docs/getting-started/installation/
-  argo.app_helm(
-    'logging-operator',
-    'logging-operator',
-    'https://ot-container-kit.github.io/helm-charts/',
-    'logging-operator',
-    '0.4.0',
-    wave=20,
-  ),
   argo.app_helm(
     'fluentd',
-    'logging-operator',
-    'https://ot-container-kit.github.io/helm-charts/',
     'fluentd',
-    '0.4.0',
+    'https://fluent.github.io/helm-charts',
+    'fluentd',
+    '0.24.0',
     wave=20,
     helm_params=[
-      argo.var('elasticSearchHost', 'elasticsearch-master'),
-      argo.var('elasticSearchPassword', 'elasticsearch-password'),
-      argo.var('indexNameStrategy', 'namespace_name'),
-      argo.var('esSecurity.enabled', 'true'),
-      argo.var('esSecurity.elasticSearchPassword', 'elasticsearch-password-secret'),
+      argo.var('config.outputs', std.format(|||
+        [OUTPUT]
+          Name            es
+          Match           *
+          Host            %s
+          Port            $d
+          Cloud_ID        %s
+          Cloud_Auth      %s:%s
+          Logstash_Format On
+          Logstash_Prefix my-cluster
+          Replace_Dots    On
+          Retry_Limit     False
+          tls             On
+          tls.verify      Off
+      |||, [
+        argo.config.es.endpoint,
+        9243,
+        argo.config.es.endpoint,
+        argo.config.es.user + ':' + argo.config.es.pass,
+      ])),
     ]
   ),
 
