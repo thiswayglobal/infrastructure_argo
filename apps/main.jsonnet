@@ -316,7 +316,8 @@ local e = import '../libs/env.libsonnet';
         argo.config.es.endpoint,
         9243,
         argo.config.es.endpoint,
-        argo.config.es.user + ':' + argo.config.es.pass,
+        argo.config.es.user,
+        argo.config.es.pass,
       ])),
     ]
   ),
