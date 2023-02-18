@@ -328,6 +328,7 @@ local e = import '../libs/env.libsonnet';
                     replace=true,
                     targetRevision=argo.config.argo_branch,
                     wave=20),
+  argo.app('keycloak', 'keycloak', 'keycloak', wave=30),
 
 
   argo.appKustomize('secrets',
