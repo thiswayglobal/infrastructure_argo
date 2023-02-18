@@ -313,7 +313,7 @@ local e = import '../libs/env.libsonnet';
             tls.verify      Off
       |||, [
         argo.config.es.endpoint,
-        9243,
+        443,
         argo.config.es.user,
         argo.config.es.pass,
       ])),
