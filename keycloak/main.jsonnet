@@ -43,6 +43,8 @@ local k = import '../libs/keycloak.libsonnet';
   k8s.sa('patch', namespace='patch-operator'),
   k8s.clusterRoleBinding('patch', 'cluster-admin', 'patch', 'patch-operator'),
 
+
+  //'"{{ (index . 1).data.username }}"'
   {
     apiVersion: 'redhatcop.redhat.io/v1alpha1',
     kind: 'Patch',
@@ -65,7 +67,7 @@ local k = import '../libs/keycloak.libsonnet';
           patchTemplate: std.manifestYamlDoc(
             {
               data: {
-                ADMIN_USERNAME: '"{{ (index . 1).data.username }}"',
+                ADMIN_USERNAME: 'aaa',
               },
             },
           ),
