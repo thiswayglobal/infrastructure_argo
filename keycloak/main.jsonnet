@@ -2,6 +2,7 @@ local argo = import '../libs/argo.libsonnet';
 local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
 local k = import '../libs/keycloak.libsonnet';
+local p = import '../libs/patch.libsonnet';
 
 [
   k8s.ns('keycloak-operator', true, wave=10),
@@ -41,45 +42,27 @@ local k = import '../libs/keycloak.libsonnet';
   ),
 
 
-  //'"{{ (index . 1).data.username }}"'
-  {
-    apiVersion: 'redhatcop.redhat.io/v1alpha1',
-    kind: 'Patch',
-    metadata: {
-      name: 'patch1',
-      namespace: 'patch-operator',
+  p.patch(
+    'patch1',
+    {
+      apiVersion: 'v1',
+      kind: 'Secret',
+      name: 'credential-external-keycloak',
+      namespace: 'keycloak-operator',
     },
-    spec: {
-      serviceAccountRef: {
-        name: 'patch',
+    [
+      {
+        apiVersion: 'v1',
+        kind: 'Secret',
+        name: 'test1-initial-admin',
+        namespace: 'keycloak-operator',
       },
-      patches: {
-        patch1: {
-          targetObjectRef: {
-            apiVersion: 'v1',
-            kind: 'Secret',
-            name: 'credential-external-keycloak',
-            namespace: 'keycloak-operator',
-          },
-          patchTemplate: std.manifestYamlDoc(
-            {
-              data: {
-                ADMIN_USERNAME: '{{ (index . 1).data.username }}',
-                ADMIN_PASSWORD: '{{ (index . 1).data.password }}',
-              },
-            },
-          ),
-          patchType: 'application/strategic-merge-patch+json',
-          sourceObjectRefs: [
-            {
-              apiVersion: 'v1',
-              kind: 'Secret',
-              name: 'test1-initial-admin',
-              namespace: 'keycloak-operator',
-            },
-          ],
-        },
+    ],
+    {
+      data: {
+        ADMIN_USERNAME: '{{ (index . 1).data.username }}',
+        ADMIN_PASSWORD: '{{ (index . 1).data.password }}',
       },
-    },
-  },
+    }
+  ),
 ]
