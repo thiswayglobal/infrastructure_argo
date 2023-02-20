@@ -41,7 +41,7 @@ local k = import '../libs/keycloak.libsonnet';
   ),
 
   k8s.sa('patch', namespace='patch-operator'),
-  k8s.clusterRoleBinding('patch', 'ClusterAdmin', 'patch', 'patch-operator'),
+  k8s.clusterRoleBinding('patch', 'cluster-admin', 'patch', 'patch-operator'),
 
   {
     apiVersion: 'redhatcop.redhat.io/v1alpha1',
