@@ -40,22 +40,26 @@ local k = import '../libs/keycloak.libsonnet';
     namespace='keycloak-operator'
   ),
 
-  k8s.sa('patch'),
-  k8s.role('patch', [
-    {
-      apiGroups: ['*'],
-      resources: ['*'],
-      verbs: ['*'],
-    },
-  ]),
-  k8s.roleBinding('patch', 'patch', 'patch'),
+  k8s.sa('patch', namespace='patch-operator'),
+  k8s.role(
+    'patch',
+    [
+      {
+        apiGroups: ['*'],
+        resources: ['*'],
+        verbs: ['*'],
+      },
+    ],
+    namespace='patch-operator'
+  ),
+  k8s.roleBinding('patch', 'patch', 'patch', namespace='patch-operator'),
 
   {
     apiVersion: 'redhatcop.redhat.io/v1alpha1',
     kind: 'Patch',
     metadata: {
       name: 'patch1',
-      namespace: 'keycloak-operator',
+      namespace: 'patch-operator',
     },
     spec: {
       serviceAccountRef: {
