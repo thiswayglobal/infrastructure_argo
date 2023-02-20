@@ -44,7 +44,7 @@ local k = import '../libs/keycloak.libsonnet';
     apiVersion: 'redhatcop.redhat.io/v1alpha1',
     kind: 'Patch',
     metadata: {
-      name: 'patch-operator-mutatingwebhookconfiguration',
+      name: 'patch1',
       namespace: 'keycloak-operator',
     },
     spec: {
@@ -52,7 +52,7 @@ local k = import '../libs/keycloak.libsonnet';
         name: 'default',
       },
       patches: {
-        'patch-operator-mutatingwebhookconfigurations': {
+        patch1: {
           targetObjectRef: {
             apiVersion: 'v1',
             kind: 'Secret',
