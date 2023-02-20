@@ -341,7 +341,8 @@ local e = import '../libs/env.libsonnet';
         kind: 'Secret',
         name: 'credential-external-keycloak',
         jqPathExpressions: [
-          '.data',
+          '.data.ADMIN_USERNAME',
+          '.data.ADMIN_PASSWORD',
         ],
       },
     ],
