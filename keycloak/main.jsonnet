@@ -45,9 +45,12 @@ local k = import '../libs/keycloak.libsonnet';
     kind: 'Patch',
     metadata: {
       name: 'patch-operator-mutatingwebhookconfiguration',
-      namespace: 'patch-operator',
+      namespace: 'keycloak-operator',
     },
     spec: {
+      serviceAccountRef: {
+        name: 'default',
+      },
       patches: {
         'patch-operator-mutatingwebhookconfigurations': {
           targetObjectRef: {
