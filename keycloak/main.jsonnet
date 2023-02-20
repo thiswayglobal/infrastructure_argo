@@ -9,7 +9,7 @@ local k = import '../libs/keycloak.libsonnet';
   istio.virtualService(
     'test1',
     [istio.virtualServiceRule(['/'], 'test1-service', 8080)],
-    [argo.config.env.test_payload.domain],
+    [argo.config.env.keycloak.domain],
     namespace='test-payload',
     wave=20
   ),
