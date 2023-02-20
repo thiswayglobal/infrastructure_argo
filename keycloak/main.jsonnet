@@ -71,7 +71,7 @@ local k = import '../libs/keycloak.libsonnet';
               },
             },
           ),
-          //patchType: 'application/json-patch+json',
+          patchType: 'application/strategic-merge-patch+json',
           sourceObjectRefs: [
             {
               apiVersion: 'v1',
