@@ -337,12 +337,11 @@ local e = import '../libs/env.libsonnet';
     wave=30,
     ignoreDifferences=[
       {
-        group: 'v1',
+        group: '*',
         kind: 'Secret',
         name: 'credential-external-keycloak',
         jqPathExpressions: [
-          '.data.ADMIN_USERNAME',
-          '.data.ADMIN_PASSWORD',
+          '.data',
         ],
       },
     ],
