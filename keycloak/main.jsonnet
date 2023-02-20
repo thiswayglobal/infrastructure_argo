@@ -40,9 +40,6 @@ local k = import '../libs/keycloak.libsonnet';
     namespace='keycloak-operator'
   ),
 
-  k8s.sa('patch', namespace='patch-operator'),
-  k8s.clusterRoleBinding('patch', 'cluster-admin', 'patch', 'patch-operator'),
-
 
   //'"{{ (index . 1).data.username }}"'
   {
@@ -68,6 +65,7 @@ local k = import '../libs/keycloak.libsonnet';
             {
               data: {
                 ADMIN_USERNAME: '{{ (index . 1).data.username }}',
+                ADMIN_PASSWORD: '{{ (index . 1).data.password }}',
               },
             },
           ),

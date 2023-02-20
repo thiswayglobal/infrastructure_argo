@@ -182,6 +182,8 @@ local e = import '../libs/env.libsonnet';
       argo.var('enableCertManager', 'true'),
     ]
   ),
+  k8s.sa('patch', namespace='patch-operator', wave=21),
+  k8s.clusterRoleBinding('patch', 'cluster-admin', 'patch', 'patch-operator', wave=21),
 
   argo.app_helm(
     'reloader',
@@ -328,7 +330,22 @@ local e = import '../libs/env.libsonnet';
                     replace=true,
                     targetRevision=argo.config.argo_branch,
                     wave=20),
-  argo.app('keycloak', 'keycloak', 'keycloak', wave=30),
+  argo.app(
+    'keycloak',
+    'keycloak',
+    'keycloak',
+    wave=30,
+    ignoreDifferences=[
+      {
+        group: 'v1',
+        kind: 'Secret',
+        name: 'credential-external-keycloak',
+        jqPathExpressions: [
+          '.data',
+        ],
+      },
+    ],
+  ),
 
 
   argo.appKustomize('secrets',
