@@ -361,9 +361,6 @@
       } else {},
       name: name,
       [if namespace != null then 'namespace']: namespace,
-      [if wave != null then 'annotations']: {
-        'argocd.argoproj.io/sync-wave': std.toString(wave),
-      },
     },
   },
   sa:: _sa,
