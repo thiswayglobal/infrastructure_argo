@@ -67,7 +67,7 @@ local k = import '../libs/keycloak.libsonnet';
           patchTemplate: std.manifestYamlDoc(
             {
               data: {
-                ADMIN_USERNAME: 'YWFh',
+                ADMIN_USERNAME: '"{{ (index . 1).data.username }}"',
               },
             },
           ),
