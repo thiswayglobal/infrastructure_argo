@@ -14,4 +14,67 @@ local k = import '../libs/keycloak.libsonnet';
     namespace='keycloak-operator',
     wave=20
   ),
+
+  {
+    apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
+    kind: 'ExternalKeycloak',
+    metadata: {
+      name: 'external-keycloak',
+      namespace: 'keycloak-operator',
+      labels: {
+        app: 'external-sso',
+      },
+    },
+    spec: {
+      url: 'https://test1-service:8080',
+      contextRoot: '/',
+    },
+  },
+
+  k8s.secret(
+    'credential-external-keycloak',
+    stringData={
+      ADMIN_USERNAME: '',
+      ADMIN_PASSWORD: '',
+    },
+    namespace='keycloak-operator'
+  ),
+
+  {
+    apiVersion: 'redhatcop.redhat.io/v1alpha1',
+    kind: 'Patch',
+    metadata: {
+      name: 'patch-operator-mutatingwebhookconfiguration',
+      namespace: 'patch-operator',
+    },
+    spec: {
+      patches: {
+        'patch-operator-mutatingwebhookconfigurations': {
+          targetObjectRef: {
+            apiVersion: 'v1',
+            kind: 'Secret',
+            name: 'credential-external-keycloak',
+          },
+          patchTemplate: std.toString(
+            [
+              {
+                op: 'replace',
+                path: '/data/ADMIN_USERNAME',
+                value: '"{{ (index . 1).data.username }}"',
+              },
+            ]
+          ),
+          patchType: 'application/json-patch+json',
+          sourceObjectRefs: [
+            {
+              apiVersion: 'v1',
+              kind: 'Secret',
+              name: 'test1-initial-admin',
+              namespace: 'keycloak-operator',
+            },
+          ],
+        },
+      },
+    },
+  },
 ]
