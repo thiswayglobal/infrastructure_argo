@@ -4,7 +4,8 @@ local k8s = import '../libs/k8s.libsonnet';
 local k = import '../libs/keycloak.libsonnet';
 
 [
-  k.keycloak('test1', argo.config.rds.keycloak, wave=10),
+  k8s.ns(argo.config.app_name, true, wave=10),
+  k.keycloak('test1', argo.config.rds.keycloak, wave=11),
 
   istio.virtualService(
     'test1',
