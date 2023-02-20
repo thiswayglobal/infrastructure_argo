@@ -60,13 +60,11 @@ local k = import '../libs/keycloak.libsonnet';
             namespace: 'keycloak-operator',
           },
           patchTemplate: std.toString(
-            [
-              {
-                op: 'replace',
-                path: '/data/ADMIN_USERNAME',
-                value: '"{{ (index . 1).data.username }}"',
+            {
+              data: {
+                ADMIN_USERNAME: '"{{ (index . 1).data.username }}"',
               },
-            ]
+            },
           ),
           patchType: 'application/json-patch+json',
           sourceObjectRefs: [
