@@ -24,7 +24,7 @@ local k8s = import '../libs/k8s.libsonnet';
       spec: {
         instances: 1,
         db: {
-          vendor: 'postgres',
+          vendor: 'mysql',
           //host: db_obj.db_host,
           //database: db_obj.db_name,
           //port: 5432,
