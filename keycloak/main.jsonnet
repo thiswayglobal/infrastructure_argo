@@ -69,7 +69,7 @@ local k = import '../libs/keycloak.libsonnet';
               },
             },
           ),
-          patchType: 'application/json-patch+json',
+          //patchType: 'application/json-patch+json',
           sourceObjectRefs: [
             {
               apiVersion: 'v1',
