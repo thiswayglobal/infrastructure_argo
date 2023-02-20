@@ -32,7 +32,8 @@ local k8s = import '../libs/k8s.libsonnet';
           //poolInitialSize: 1,
           //poolMinSize: 1,
           //poolMaxSize: 100,
-          url: 'jdbc:mysql://' + db_obj.db_host + '/' + db_obj.db_name,
+          url: db_obj.db_url,
+          /*
           usernameSecret: {
             name: name + '-db',
             key: 'username',
@@ -41,6 +42,7 @@ local k8s = import '../libs/k8s.libsonnet';
             name: name + '-db',
             key: 'password',
           },
+          */
         },
         hostname: {
           strict: false,
