@@ -54,6 +54,7 @@ local k = import '../libs/keycloak.libsonnet';
             apiVersion: 'v1',
             kind: 'Secret',
             name: 'credential-external-keycloak',
+            namespace: 'keycloak-operator',
           },
           patchTemplate: std.toString(
             [
