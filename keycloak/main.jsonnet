@@ -59,7 +59,7 @@ local k = import '../libs/keycloak.libsonnet';
             name: 'credential-external-keycloak',
             namespace: 'keycloak-operator',
           },
-          patchTemplate: std.toString(
+          patchTemplate: std.manifestYamlDoc(
             {
               data: {
                 ADMIN_USERNAME: '"{{ (index . 1).data.username }}"',
