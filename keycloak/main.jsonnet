@@ -27,7 +27,7 @@ local p = import '../libs/patch.libsonnet';
       },
     },
     spec: {
-      url: 'https://test1-service:8080',
+      url: 'http://test1-service:8080',
       contextRoot: '/',
     },
   },
