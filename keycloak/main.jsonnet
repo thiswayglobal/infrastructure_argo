@@ -41,7 +41,7 @@ local p = import '../libs/patch.libsonnet';
     namespace='keycloak-operator'
   ),
 
-
+  //https://github.com/keycloak/keycloak-realm-operator
   p.patch(
     'patch1',
     {
@@ -65,4 +65,6 @@ local p = import '../libs/patch.libsonnet';
       },
     }
   ),
+
+  import 'realm.libsonnet',
 ]
