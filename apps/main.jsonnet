@@ -323,13 +323,15 @@ local e = import '../libs/env.libsonnet';
     ]
   ),
 
+  k8s.ns('keycloak-operator', true, wave=20),
   argo.appKustomize('keycloak-operator',
                     'keycloak-operator',
                     argo.config.argo_repo,
                     'keycloak-operator',
                     replace=true,
                     targetRevision=argo.config.argo_branch,
-                    wave=20),
+                    createNamespace=false,
+                    wave=21),
   argo.app(
     'keycloak',
     'keycloak',

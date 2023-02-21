@@ -5,7 +5,6 @@ local k = import '../libs/keycloak.libsonnet';
 local p = import '../libs/patch.libsonnet';
 
 [
-  k8s.ns('keycloak-operator', true, wave=10),
   k.keycloak('test1', argo.config.rds.keycloak, wave=11),
 
   istio.virtualService(
