@@ -3,6 +3,7 @@
   kind: 'KeycloakRealm',
   metadata: {
     name: 'example-keycloakrealm',
+    namespace: 'keycloak-operator',
     labels: {
       app: 'external-sso',
     },
