@@ -148,12 +148,14 @@
   },
   deployment_container_port:: _deployment_container_port,
 
-  local _deployment_container_http_probe(port, path='/', initialDelay=null) = {
+  local _deployment_container_http_probe(port, path='/', initialDelay=null, failureThreshold=null, periodSeconds=null) = {
     httpGet: {
       path: path,
       port: port,
     },
     [if initialDelay != null then 'initialDelaySeconds']: initialDelay,
+    [if failureThreshold != null then 'failureThreshold']: failureThreshold,
+    [if periodSeconds != null then 'periodSeconds']: periodSeconds,
   },
   deployment_container_http_probe:: _deployment_container_http_probe,
 
@@ -182,6 +184,7 @@
                               ports=null,
                               liveness_probe=null,
                               readiness_probe=null,
+                              startup_probe=null,
                               resources=null,
                               command=null,
                               args=null,
@@ -191,6 +194,7 @@
     name: name,
     image: image,
     [if ports != null then 'ports']: ports,
+    [if startup_probe != null then 'startupProbe']: startup_probe,
     [if liveness_probe != null then 'livenessProbe']: liveness_probe,
     [if readiness_probe != null then 'readinessProbe']: readiness_probe,
     [if resources != null then 'resources']: resources,
@@ -237,7 +241,9 @@
     imagePullSecrets=null,
     securityContext=null,
     sa=null,
-    reloader=true
+    reloader=true,
+    annotations=null,
+    podsAnnotations=null
   ) = {
     apiVersion: 'apps/v1',
     kind: 'Deployment',
@@ -247,10 +253,10 @@
       labels: {
         app: name,
       } + labels,
-      [if wave != null || reloader != null then 'annotations']: {
+      [if wave != null || reloader != null || annotations != null then 'annotations']: {
         [if wave != null then 'argocd.argoproj.io/sync-wave']: std.toString(wave),
         [if reloader != null then 'reloader.stakater.com/auto']: 'true',
-      },
+      } + if annotations != null then annotations else {},
     },
     spec: {
       [if strategy != null then 'strategy']: {
@@ -267,9 +273,9 @@
           labels: {
             app: name,
           },
-          [if disableIstioProbes then 'annotations']: {
-            'sidecar.istio.io/rewriteAppHTTPProbers': 'false',
-          },
+          [if podsAnnotations != null || disableIstioProbes then 'annotations']: {
+            [if disableIstioProbes then 'sidecar.istio.io/rewriteAppHTTPProbers']: 'false',
+          } + if podsAnnotations != null then podsAnnotations else {},
         },
         spec: {
           [if sa != null then 'serviceAccountName']: sa,

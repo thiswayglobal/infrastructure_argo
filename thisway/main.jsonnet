@@ -4,6 +4,8 @@ local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
 
 [
+  k8s.ns(argo.config.app_name, true),
+
   hashicorp.workspace(
     argo.config.app_name,
     'app_tf',
