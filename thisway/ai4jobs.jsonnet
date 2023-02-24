@@ -25,7 +25,7 @@ local k8s = import '../libs/k8s.libsonnet';
           k8s.var('JAVA_OPTS', '-Ddebug -XX:InitialRAMPercentage=20.0 -XX:MinRAMPercentage=50.0 -XX:MaxRAMPercentage=80.0 -XX:+HeapDumpOnOutOfMemoryError -XX:+ExitOnOutOfMemoryError -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport'),
         ],
         args=['/thisway'],
-        /*
+
         volumeMounts=[
           {
             name: 'config',
@@ -33,7 +33,7 @@ local k8s = import '../libs/k8s.libsonnet';
             subPath: 'config',
           },
         ],
-        */
+
         resources=k8s.deployment_container_resources('500m', '2Gi', '1', '2Gi'),
       ),
     ],
