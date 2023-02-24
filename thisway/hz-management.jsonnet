@@ -18,9 +18,6 @@ local k8s = import '../libs/k8s.libsonnet';
           k8s.var('HZ_NETWORK_PORT_PORTCOUNT', '100'),
           k8s.var('HZ_NETWORK_PORT_PORT', '5701'),
           k8s.var('MC_CONTEXT_PATH', 'hzman'),
-          k8s.var('HTTP2_DISABLE', 'true'),
-          k8s.var('HTTP2_DISABLE', 'true'),
-          k8s.var('HTTP2_DISABLE', 'true'),
 
         ],
         resources=k8s.deployment_container_resources('100m', '3Gi', '1', '3Gi'),
