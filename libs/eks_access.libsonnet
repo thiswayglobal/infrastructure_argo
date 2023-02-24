@@ -3,7 +3,7 @@
     apiVersion: 'iamauthenticator.k8s.aws/v1alpha1',
     kind: 'IAMIdentityMapping',
     metadata: {
-      name: 'secrets-operator-role',
+      name: name,
     },
     spec: {
       arn: arn,
