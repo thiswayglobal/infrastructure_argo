@@ -4,19 +4,19 @@ local k8s = import '../libs/k8s.libsonnet';
 
 [
   k8s.deployment(
-    'ai4jobs',
+    'thisway',
     [
       k8s.deployment_container(
         '957377755024.dkr.ecr.us-east-2.amazonaws.com/template:1.0.1',
-        'ai4jobs',
+        'thisway',
         [
           k8s.deployment_container_port('hazelcast', 5701, 'TCP'),
           k8s.deployment_container_port('app', 8080, 'TCP'),
-          k8s.deployment_container_port('prometheus', 8086, 'TCP'),
+          k8s.deployment_container_port('prometheus', 8085, 'TCP'),
         ],
-        //startup_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/liveness', failureThreshold=10, periodSeconds=20),
-        //liveness_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/liveness'),
-        //readiness_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/readiness'),
+        startup_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/liveness', failureThreshold=10, periodSeconds=20),
+        liveness_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/liveness'),
+        readiness_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/readiness'),
         env=[
           k8s.var('KUBERNETES_NAMESPACE', argo.config.app_name),
           k8s.var('HAZELCAST_SERVICE', 'ai4jobs'),
