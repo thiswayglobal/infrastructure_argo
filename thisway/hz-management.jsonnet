@@ -23,9 +23,9 @@ local k8s = import '../libs/k8s.libsonnet';
           k8s.var('HTTP2_DISABLE', 'true'),
 
         ],
+        resources=k8s.deployment_container_resources('100m', '3Gi', '1', '3Gi'),
       ),
     ],
-    resources=k8s.deployment_container_resources('100m', '3Gi', '1', '3Gi'),
     sa='app',
     wave=20
   ),
