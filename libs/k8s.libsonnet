@@ -542,4 +542,10 @@
     [if stringData != null then 'stringData']: stringData,
   },
   random_secret:: _random_secret,
+
+  local _var = function(name, value) {
+    name: name,
+    value: value,
+  },
+  var:: _var,
 }
