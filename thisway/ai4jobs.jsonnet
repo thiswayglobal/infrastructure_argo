@@ -14,7 +14,7 @@ local k8s = import '../libs/k8s.libsonnet';
           k8s.deployment_container_port('app', 8080, 'TCP'),
           k8s.deployment_container_port('prometheus', 8086, 'TCP'),
         ],
-        startup_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/liveness', failureThreshold=10, periodSeconds=20),
+        //startup_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/liveness', failureThreshold=10, periodSeconds=20),
         liveness_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/liveness'),
         readiness_probe=k8s.deployment_container_http_probe('prometheus', '/actuator/health/readiness'),
         env=[
