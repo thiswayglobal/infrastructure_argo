@@ -43,7 +43,7 @@ local k8s = import '../libs/k8s.libsonnet';
       {
         name: 'config',
         secret: {
-          name: 'tf-output',
+          secretName: 'tf-output',
         },
       },
     ],
