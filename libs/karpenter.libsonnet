@@ -54,7 +54,7 @@ local argo = import '../libs/argo.libsonnet';
           type: 'private',
         },
         securityGroupSelector: {
-          ['kubernetes.io/cluster/' + argo.config.cluster_name]: 'node',
+          ['kubernetes.io/cluster/' + argo.config.cluster_name]: 'owned',
         },
       },
       //ttlSecondsAfterEmpty: 30,
