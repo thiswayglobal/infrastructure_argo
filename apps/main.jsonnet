@@ -6,6 +6,7 @@ local prom = import '../libs/prometheus.libsonnet';
 local cm = import '../libs/cert-manager.libsonnet';
 local k = import '../libs/karpenter.libsonnet';
 local hashicorp = import '../libs/hashicorp.libsonnet';
+local access = import '../libs/eks_access.libsonnet';
 
 
 local e = import '../libs/env.libsonnet';
@@ -349,6 +350,7 @@ local e = import '../libs/env.libsonnet';
     ],
   ),
 
+  access.user('alex', 'arn:aws:iam::912076471667:user/ashmelev', 'system:masters'),
 
   argo.appKustomize('secrets',
                     'secrets',
