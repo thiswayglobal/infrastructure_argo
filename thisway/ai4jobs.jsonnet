@@ -37,6 +37,7 @@ local k8s = import '../libs/k8s.libsonnet';
         resources=k8s.deployment_container_resources('500m', '2Gi', '1', '2Gi'),
       ),
     ],
+    replicas=3,
     podsAnnotations={
       'prometheus.io/scrape': 'true',
       'prometheus.io/path': '/actuator/prometheus',
