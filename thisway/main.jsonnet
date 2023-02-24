@@ -47,9 +47,4 @@ l.service('ingest-individual', k8s.deployment_container_resources('100m', '4Gi',
 l.service('ingest-job', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20) +
 l.service('revsearch', k8s.deployment_container_resources('100m', '3Gi', '1', '3Gi'), 20, arg='search') +
 l.service('revealsvc', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20) +
-l.service('score', k8s.deployment_container_resources('100m', '3Gi', '1', '3Gi'), 20) +
-l.service('thisway', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20) +
-l.service('thisway', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20) +
-l.service('thisway', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20) +
-l.service('thisway', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20) +
-l.service('thisway', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20)
+l.service('score', k8s.deployment_container_resources('100m', '3Gi', '1', '3Gi'), 20)
