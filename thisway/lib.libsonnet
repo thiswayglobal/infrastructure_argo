@@ -67,4 +67,5 @@ local k8s = import '../libs/k8s.libsonnet';
     ),
 
   ],
+  service:: _service,
 }
