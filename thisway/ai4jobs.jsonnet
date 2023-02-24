@@ -34,6 +34,7 @@ local k8s = import '../libs/k8s.libsonnet';
           },
         ],
         */
+        resources=k8s.deployment_container_resources('500m', '2048Mi', '1', '2048Mi'),
       ),
     ],
     podsAnnotations={
