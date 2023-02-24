@@ -1,3 +1,7 @@
+local argo = import '../libs/argo.libsonnet';
+local istio = import '../libs/istio.libsonnet';
+local k8s = import '../libs/k8s.libsonnet';
+
 [
   k8s.deployment(
     'ai4jobs',
