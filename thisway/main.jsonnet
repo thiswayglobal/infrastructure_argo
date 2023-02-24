@@ -33,6 +33,53 @@ local l = import 'lib.libsonnet';
     ],
     wave=10,
   ),
+
+  k8s.role(
+    'namespace-reader',
+    [
+      {
+        apiGroups: [
+          '',
+        ],
+        resources: [
+          'configmaps',
+          'pods',
+          'nodes',
+          'services',
+          'endpoints',
+          'secrets',
+        ],
+        verbs: [
+          'get',
+          'list',
+          'watch',
+        ],
+      },
+    ],
+    wave=10
+  ),
+  k8s.roleBinding('namespace-reader', 'namespace-reader', 'app', wave=20),
+
+  istio.virtualService(
+    'vs',
+    [
+      istio.virtualServiceRule(['/api/v3/partner/'], 'ai4jobs', 80, rewritePrefix='/ai4jobs/api/v3/partner/'),
+      istio.virtualServiceRule(['/api/v2/partner/'], 'ai4jobs', 80, rewritePrefix='/ai4jobs/api/v2/partner/'),
+      istio.virtualServiceRule(['/discover'], 'discover', 80),
+      istio.virtualServiceRule(['/score'], 'score', 80),
+      istio.virtualServiceRule(['/reveal'], 'reveal', 80),
+      istio.virtualServiceRule(['/twg'], 'thisway', 80),
+      istio.virtualServiceRule(['/attract'], 'attract', 80),
+      istio.virtualServiceRule(['/ai4jobs'], 'ai4jobs', 80),
+      istio.virtualServiceRule(['/ghio'], 'ghio', 80),
+      istio.virtualServiceRule(['/discover'], 'discover', 80),
+      istio.virtualServiceRule(['/discover'], 'discover', 80),
+      istio.virtualServiceRule(['/discover'], 'discover', 80),
+      istio.virtualServiceRule(['/discover'], 'discover', 80),
+    ],
+    [argo.config.env.thisway.domain],
+    wave=20
+  ),
 ]
 +
 l.service('thisway', k8s.deployment_container_resources('100m', '2Gi', '1', '2Gi'), 20) +

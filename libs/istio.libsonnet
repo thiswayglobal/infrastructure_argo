@@ -89,7 +89,7 @@ local k8s = import '../libs/k8s.libsonnet';
   ],
   gws:: _gws,
 
-  local _virtualServiceRule = function(prefixes, host, port, rewritePrefix=false, cors=null) {
+  local _virtualServiceRule = function(prefixes, host, port, rewritePrefix=null, cors=null) {
     match: [
       {
         uri: {
@@ -98,8 +98,8 @@ local k8s = import '../libs/k8s.libsonnet';
       }
       for prefix in prefixes
     ],
-    [if rewritePrefix then 'rewrite']: {
-      uri: '/',
+    [if rewritePrefix != null then 'rewrite']: {
+      uri: rewritePrefix,
     },
     route: [
       {
