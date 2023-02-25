@@ -196,14 +196,14 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'ALTERNATIVE',
               priority: 20,
-              autheticatorFlow: true,
+
               flowAlias: 'Verify Existing Account by Re-authentication',
               userSetupAllowed: false,
             },
@@ -222,7 +222,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -230,7 +230,7 @@
               authenticatorFlow: false,
               requirement: 'DISABLED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -238,7 +238,7 @@
               authenticatorFlow: false,
               requirement: 'DISABLED',
               priority: 30,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -256,7 +256,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -264,7 +264,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -282,7 +282,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -290,7 +290,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -308,7 +308,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -316,7 +316,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -334,14 +334,14 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: true,
+
               flowAlias: 'Account verification options',
               userSetupAllowed: false,
             },
@@ -360,7 +360,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -368,7 +368,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -387,14 +387,14 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'ALTERNATIVE',
               priority: 20,
-              autheticatorFlow: true,
+
               flowAlias: 'Handle Existing Account',
               userSetupAllowed: false,
             },
@@ -413,14 +413,14 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'CONDITIONAL',
               priority: 20,
-              autheticatorFlow: true,
+
               flowAlias: 'First broker login - Conditional OTP',
               userSetupAllowed: false,
             },
@@ -439,7 +439,7 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -447,7 +447,7 @@
               authenticatorFlow: false,
               requirement: 'DISABLED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -455,14 +455,14 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 25,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'ALTERNATIVE',
               priority: 30,
-              autheticatorFlow: true,
+
               flowAlias: 'forms',
               userSetupAllowed: false,
             },
@@ -481,7 +481,7 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -489,7 +489,7 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -497,7 +497,7 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 30,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -505,7 +505,7 @@
               authenticatorFlow: false,
               requirement: 'ALTERNATIVE',
               priority: 40,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -523,7 +523,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -531,14 +531,14 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'CONDITIONAL',
               priority: 30,
-              autheticatorFlow: true,
+
               flowAlias: 'Direct Grant - Conditional OTP',
               userSetupAllowed: false,
             },
@@ -557,7 +557,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -576,14 +576,14 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: true,
+
               flowAlias: 'User creation or linking',
               userSetupAllowed: false,
             },
@@ -602,14 +602,14 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'CONDITIONAL',
               priority: 20,
-              autheticatorFlow: true,
+
               flowAlias: 'Browser - Conditional OTP',
               userSetupAllowed: false,
             },
@@ -628,14 +628,14 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: true,
+
               flowAlias: 'Authentication Options',
               userSetupAllowed: false,
             },
@@ -654,7 +654,7 @@
               authenticatorFlow: true,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: true,
+
               flowAlias: 'registration form',
               userSetupAllowed: false,
             },
@@ -673,7 +673,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -681,7 +681,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 40,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -689,7 +689,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 50,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -697,7 +697,7 @@
               authenticatorFlow: false,
               requirement: 'DISABLED',
               priority: 60,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -715,7 +715,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -723,7 +723,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 20,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
@@ -731,14 +731,14 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 30,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
             {
               authenticatorFlow: true,
               requirement: 'CONDITIONAL',
               priority: 40,
-              autheticatorFlow: true,
+
               flowAlias: 'Reset - Conditional OTP',
               userSetupAllowed: false,
             },
@@ -757,7 +757,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 10,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
@@ -775,7 +775,7 @@
               authenticatorFlow: false,
               requirement: 'REQUIRED',
               priority: 0,
-              autheticatorFlow: false,
+
               userSetupAllowed: false,
             },
           ],
