@@ -5,7 +5,7 @@
     name: 'thiswayglobal',
     namespace: 'keycloak-operator',
     labels: {
-      app: 'keycloak',
+      app: 'external-sso',
     },
   },
   spec: {
