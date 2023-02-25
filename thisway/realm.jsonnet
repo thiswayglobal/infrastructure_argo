@@ -2,7 +2,7 @@
   apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
   kind: 'KeycloakRealm',
   metadata: {
-    name: 'example-keycloakrealm',
+    name: 'thiswayglobal',
     namespace: 'keycloak-operator',
     labels: {
       app: 'keycloak',
