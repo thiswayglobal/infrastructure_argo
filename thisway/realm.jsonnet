@@ -869,7 +869,7 @@
       rememberMe: false,
       resetCredentialsFlow: 'reset credentials',
       resetPasswordAllowed: false,
-      /*
+
       roles: {
         realm: [
           {
@@ -1256,7 +1256,7 @@
           ],
         },
       },
-      */
+
       scopeMappings: [
         {
           clientScope: 'offline_access',
