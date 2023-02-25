@@ -30,6 +30,10 @@ local l = import 'lib.libsonnet';
     ],
     outputs=[
       hashicorp.output('config'),
+      hashicorp.output('s3_arns'),
+      hashicorp.output('s3_names'),
+      hashicorp.output('sqs_arns'),
+      hashicorp.output('sqs_names'),
     ],
     wave=10,
   ),
