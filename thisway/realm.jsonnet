@@ -26,6 +26,7 @@
       adminEventsDetailsEnabled: false,
       adminEventsEnabled: false,
       //adminTheme	<string>
+      /*
       authenticationFlows: [
         {
           id: 'dc8e8397-fe58-40c0-b9b8-a6d18f10a671',
@@ -174,6 +175,7 @@
           ],
         },
       ],
+      */
       authenticatorConfig: [
         {
           id: '885ab0e6-0555-4973-854a-57c726c6deb3',
@@ -233,6 +235,7 @@
           },
         },
       ],
+      /*
       identityProviders: [
         {
           alias: 'circa',
@@ -258,6 +261,7 @@
           },
         },
       ],
+      */
       internationalizationEnabled: false,
       loginTheme: 'circa',
       loginWithEmailAllowed: true,
