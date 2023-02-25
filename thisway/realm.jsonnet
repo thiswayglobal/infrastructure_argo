@@ -944,6 +944,7 @@
             attributes: {},
           },
         ],
+        /*
         client: {
           'realm-management': [
             {
@@ -1255,6 +1256,7 @@
             },
           ],
         },
+        */
       },
 
       scopeMappings: [
