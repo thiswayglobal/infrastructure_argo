@@ -35,6 +35,7 @@
           providerId: 'basic-flow',
           //topLevel: true,
           //builtIn: false,
+
           authenticationExecutions: [
             {
               authenticatorConfig: 'review profile config',
@@ -44,6 +45,7 @@
               userSetupAllowed: false,
               authenticatorFlow: false,
             },
+            /*
             {
               requirement: 'REQUIRED',
               priority: 20,
@@ -51,6 +53,7 @@
               userSetupAllowed: false,
               authenticatorFlow: true,
             },
+            */
           ],
         },
         /*
