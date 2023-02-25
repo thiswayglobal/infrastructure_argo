@@ -22,7 +22,7 @@ local argo = import '../libs/argo.libsonnet';
       //      ],
       limits: {
         resources: {
-          cpu: '20',
+          cpu: '10',
         },
       },
       requirements: [
