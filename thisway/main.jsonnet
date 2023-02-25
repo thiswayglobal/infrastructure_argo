@@ -23,7 +23,7 @@ local l = import 'lib.libsonnet';
       hashicorp.var('mysql_user', argo.config.rds.master.db_user),
       hashicorp.var('mysql_pass', argo.config.rds.master.db_pass),
       hashicorp.var('keycloak_endpoint', 'https://' + argo.config.env.keycloak.domain),
-      hashicorp.var('keycloak_user', 'aaa'),
+      hashicorp.var('keycloak_user', 'aaa'),  //TODO
       hashicorp.var('keycloak_pass', 'aaa'),
       hashicorp.var('keycloak_realm', 'aaa'),
       hashicorp.var('keycloak_client_secret', 'aaa'),

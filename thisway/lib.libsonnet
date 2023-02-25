@@ -8,7 +8,7 @@ local k8s = import '../libs/k8s.libsonnet';
       name,
       [
         k8s.deployment_container(
-          '957377755024.dkr.ecr.us-east-2.amazonaws.com/template:1.0.1',
+          argo.config.env.thisway.image,
           name,
           [
             k8s.deployment_container_port('hazelcast', 5701, 'TCP'),
