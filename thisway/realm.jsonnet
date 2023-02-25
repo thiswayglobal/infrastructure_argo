@@ -33,8 +33,8 @@
           alias: 'Circa first broker login',
           description: 'Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account',
           providerId: 'basic-flow',
-          topLevel: true,
-          builtIn: false,
+          //topLevel: true,
+          //builtIn: false,
           authenticationExecutions: [
             {
               authenticatorConfig: 'review profile config',
