@@ -66,8 +66,8 @@ local p = import '../libs/patch.libsonnet';
       }
     ),
   */
-  import 'realm.libsonnet',
+  //import 'realm.libsonnet',
 
-  k.client('client-secret', { app: 'external-sso' }, ['some-client-role'],),
-  k.user('example-realm-user', { app: 'external-sso' }),
+  //k.client('client-secret', { app: 'external-sso' }, ['some-client-role'],),
+  //k.user('example-realm-user', { app: 'external-sso' }),
 ]
