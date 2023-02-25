@@ -26,162 +26,6 @@
       adminEventsDetailsEnabled: false,
       adminEventsEnabled: false,
       //adminTheme	<string>
-      /*
-            authenticationFlows: [
-              {
-                id: 'dc8e8397-fe58-40c0-b9b8-a6d18f10a671',
-                alias: 'Circa first broker login',
-                description: 'Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account',
-                providerId: 'basic-flow',
-                topLevel: true,
-                builtIn: false,
-
-                authenticationExecutions: [
-
-                  {
-                    authenticatorConfig: 'review profile config',
-                    authenticator: 'idp-review-profile',
-                    requirement: 'REQUIRED',
-                    priority: 10,
-                    userSetupAllowed: false,
-                    authenticatorFlow: false,
-                  },
-
-                  {
-                    requirement: 'REQUIRED',
-                    priority: 20,
-                    flowAlias: 'Circa first broker login User creation or linking',
-                    userSetupAllowed: false,
-                    authenticatorFlow: true,
-                  },
-
-                ],
-              },
-
-              {
-                id: 'bf22082d-aefb-4504-bddf-5176b07bf977',
-                alias: 'Circa first broker login Account verification options',
-                description: 'Method with which to verity the existing account',
-                providerId: 'basic-flow',
-                topLevel: false,
-                builtIn: false,
-                authenticationExecutions: [
-                  {
-                    authenticator: 'idp-email-verification',
-                    requirement: 'DISABLED',
-                    priority: 10,
-                    userSetupAllowed: false,
-                    authenticatorFlow: false,
-                  },
-                  {
-                    requirement: 'DISABLED',
-                    priority: 20,
-                    flowAlias: 'Circa first broker login Verify Existing Account by Re-authentication',
-                    userSetupAllowed: false,
-                    authenticatorFlow: true,
-                  },
-                ],
-              },
-              {
-                id: 'e3d9497d-6c4e-401b-9462-a9a898f3aa72',
-                alias: 'Circa first broker login First broker login - Conditional OTP',
-                description: 'Flow to determine if the OTP is required for the authentication',
-                providerId: 'basic-flow',
-                topLevel: false,
-                builtIn: false,
-                authenticationExecutions: [
-                  {
-                    authenticator: 'conditional-user-configured',
-                    requirement: 'REQUIRED',
-                    priority: 10,
-                    userSetupAllowed: false,
-                    authenticatorFlow: false,
-                  },
-                  {
-                    authenticator: 'auth-otp-form',
-                    requirement: 'REQUIRED',
-                    priority: 20,
-                    userSetupAllowed: false,
-                    authenticatorFlow: false,
-                  },
-                ],
-              },
-              {
-                id: 'f3b8d545-f66c-4272-85fa-173725f328e2',
-                alias: 'Circa first broker login Handle Existing Account',
-                description: 'Handle what to do if there is existing account with same email/username like authenticated identity provider',
-                providerId: 'basic-flow',
-                topLevel: false,
-                builtIn: false,
-                authenticationExecutions: [
-                  {
-                    authenticator: 'idp-confirm-link',
-                    requirement: 'REQUIRED',
-                    priority: 10,
-                    userSetupAllowed: false,
-                    authenticatorFlow: false,
-                  },
-                  {
-                    requirement: 'REQUIRED',
-                    priority: 20,
-                    flowAlias: 'Circa first broker login Account verification options',
-                    userSetupAllowed: false,
-                    authenticatorFlow: true,
-                  },
-                ],
-              },
-              {
-                id: '5ef0dfef-63e6-4f2c-aea5-9d0d47e34dc9',
-                alias: 'Circa first broker login User creation or linking',
-                description: 'Flow for the existing/non-existing user alternatives',
-                providerId: 'basic-flow',
-                topLevel: false,
-                builtIn: false,
-                authenticationExecutions: [
-                  {
-                    authenticatorConfig: 'create unique user config',
-                    authenticator: 'idp-create-user-if-unique',
-                    requirement: 'ALTERNATIVE',
-                    priority: 10,
-                    userSetupAllowed: false,
-                    authenticatorFlow: false,
-                  },
-                  {
-                    requirement: 'ALTERNATIVE',
-                    priority: 20,
-                    flowAlias: 'Circa first broker login Handle Existing Account',
-                    userSetupAllowed: false,
-                    authenticatorFlow: true,
-                  },
-                ],
-              },
-              {
-                id: '4fb6cd4d-e29b-40a3-ae98-5cf8d932ff83',
-                alias: 'Circa first broker login Verify Existing Account by Re-authentication',
-                description: 'Reauthentication of existing account',
-                providerId: 'basic-flow',
-                topLevel: false,
-                builtIn: false,
-                authenticationExecutions: [
-                  {
-                    authenticator: 'idp-username-password-form',
-                    requirement: 'REQUIRED',
-                    priority: 10,
-                    userSetupAllowed: false,
-                    authenticatorFlow: false,
-                  },
-                  {
-                    requirement: 'CONDITIONAL',
-                    priority: 20,
-                    flowAlias: 'Circa first broker login First broker login - Conditional OTP',
-                    userSetupAllowed: false,
-                    authenticatorFlow: true,
-                  },
-                ],
-              },
-
-            ],
-      */
       authenticationFlows: [
         {
           id: 'dc8e8397-fe58-40c0-b9b8-a6d18f10a671',
@@ -974,7 +818,7 @@
           },
         },
       ],
-      /*
+
       identityProviders: [
         {
           alias: 'circa',
@@ -1000,7 +844,7 @@
           },
         },
       ],
-      */
+
       internationalizationEnabled: false,
       loginTheme: 'circa',
       loginWithEmailAllowed: true,
