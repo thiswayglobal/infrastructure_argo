@@ -37,21 +37,22 @@
           //builtIn: false,
 
           authenticationExecutions: [
-            {
-              authenticatorConfig: 'review profile config',
-              authenticator: 'idp-review-profile',
-              requirement: 'REQUIRED',
-              priority: 10,
-              userSetupAllowed: false,
-              authenticatorFlow: false,
-            },
             /*
             {
-              requirement: 'REQUIRED',
-              priority: 20,
-              flowAlias: 'Circa first broker login User creation or linking',
-              userSetupAllowed: false,
-              authenticatorFlow: true,
+            authenticatorConfig: 'review profile config',
+            authenticator: 'idp-review-profile',
+            requirement: 'REQUIRED',
+            priority: 10,
+            userSetupAllowed: false,
+            authenticatorFlow: false,
+            },
+
+            {
+            requirement: 'REQUIRED',
+            priority: 20,
+            flowAlias: 'Circa first broker login User creation or linking',
+            userSetupAllowed: false,
+            authenticatorFlow: true,
             },
             */
           ],
