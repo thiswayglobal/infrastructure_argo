@@ -33,28 +33,28 @@
           alias: 'Circa first broker login',
           description: 'Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account',
           providerId: 'basic-flow',
-          //topLevel: true,
-          //builtIn: false,
+          topLevel: true,
+          builtIn: false,
 
           authenticationExecutions: [
             /*
-            {
-            authenticatorConfig: 'review profile config',
-            authenticator: 'idp-review-profile',
-            requirement: 'REQUIRED',
-            priority: 10,
-            userSetupAllowed: false,
-            authenticatorFlow: false,
-            },
+                       {
+                       authenticatorConfig: 'review profile config',
+                       authenticator: 'idp-review-profile',
+                       requirement: 'REQUIRED',
+                       priority: 10,
+                       userSetupAllowed: false,
+                       authenticatorFlow: false,
+                       },
 
-            {
-            requirement: 'REQUIRED',
-            priority: 20,
-            flowAlias: 'Circa first broker login User creation or linking',
-            userSetupAllowed: false,
-            authenticatorFlow: true,
-            },
-            */
+                       {
+                       requirement: 'REQUIRED',
+                       priority: 20,
+                       flowAlias: 'Circa first broker login User creation or linking',
+                       userSetupAllowed: false,
+                       authenticatorFlow: true,
+                       },
+                       */
           ],
         },
         /*
@@ -184,17 +184,17 @@
 
       authenticatorConfig: [
         {
-          id: '885ab0e6-0555-4973-854a-57c726c6deb3',
+          id: 'b254f12f-58ab-4ac9-bd23-cb86fe2ef854',
           alias: 'create unique user config',
           config: {
             'require.password.update.after.registration': 'false',
           },
         },
         {
-          id: '42a13889-294b-42f8-a9ff-9d5edcf7946e',
+          id: 'e79ee522-1c03-4874-b6d2-cff189b7437a',
           alias: 'review profile config',
           config: {
-            'update.profile.on.first.login': 'off',
+            'update.profile.on.first.login': 'missing',
           },
         },
       ],
