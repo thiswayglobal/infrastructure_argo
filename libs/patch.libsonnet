@@ -16,7 +16,7 @@
       patches: {
         patch1: {
           targetObjectRef: target,
-          patchTemplate: std.manifestYamlDoc(patch),
+          patchTemplate: std.manifestYamlDoc(patch, quote_keys=false),
           patchType: 'application/strategic-merge-patch+json',
           sourceObjectRefs: sources,
         },
