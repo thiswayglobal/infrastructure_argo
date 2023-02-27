@@ -38,13 +38,16 @@ local k8s = import '../libs/k8s.libsonnet';
   },
   keycloak:: _keycloak,
 
-  local _client = function(name, labels, roles) {
+  local _client = function(name, labels, roles, wave=null) {
     apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
     kind: 'KeycloakClient',
     metadata: {
       name: name,
       namespace: 'keycloak-operator',
       labels: labels,
+      [if wave != null then 'annotations']: {
+        'argocd.argoproj.io/sync-wave': std.toString(wave),
+      },
     },
     spec: {
       realmSelector: {
@@ -66,13 +69,16 @@ local k8s = import '../libs/k8s.libsonnet';
   },
   client:: _client,
 
-  local _user = function(name, labels) {
+  local _user = function(name, labels, wave=null) {
     apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
     kind: 'KeycloakUser',
     metadata: {
       name: name,
       namespace: 'keycloak-operator',
       labels: labels,
+      [if wave != null then 'annotations']: {
+        'argocd.argoproj.io/sync-wave': std.toString(wave),
+      },
     },
     spec: {
       realmSelector: {

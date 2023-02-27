@@ -3,6 +3,7 @@ local hashicorp = import '../libs/hashicorp.libsonnet';
 local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
 local k = import '../libs/keycloak.libsonnet';
+local p = import '../libs/patch.libsonnet';
 local l = import 'lib.libsonnet';
 
 [
@@ -88,9 +89,43 @@ local l = import 'lib.libsonnet';
     wave=20
   ),
 
-  k.user('admin', {
+  k8s.random_secret(
+    'admin',
+    ['password'],
+    wave=10,
+  ),
+
+  p.patch(
+    'admin-patch',
+    {
+      apiVersion: 'v1',
+      kind: 'Secret',
+      name: 'admin',
+      namespace: argo.config.app_name,
+    },
+    [
+      {
+        apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
+        kind: 'KeycloakUser',
+        name: argo.config.app_name + '-admin',
+        namespace: 'keycloak-operator',
+      },
+    ],
+    {
+      spec: {
+        user: {
+          credentials: {
+            value: '{{ (index . 1).data.password | b64dec }}',
+          },
+        },
+      },
+    },
+    wave=15,
+  ),
+
+  k.user(argo.config.app_name + '-admin', {
     app: 'thiswayglobal',
-  }),
+  }, wave=20),
 ]
 +
 l.service('thisway', k8s.deployment_container_resources('100m', '1Gi', '1', '2Gi'), 20) +
