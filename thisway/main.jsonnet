@@ -2,6 +2,7 @@ local argo = import '../libs/argo.libsonnet';
 local hashicorp = import '../libs/hashicorp.libsonnet';
 local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
+local k = import '../libs/keycloak.libsonnet';
 local l = import 'lib.libsonnet';
 
 [
@@ -86,6 +87,10 @@ local l = import 'lib.libsonnet';
     [argo.config.env.thisway.domain],
     wave=20
   ),
+
+  k.user('admin', {
+    app: 'external-sso',
+  }),
 ]
 +
 l.service('thisway', k8s.deployment_container_resources('100m', '1Gi', '1', '2Gi'), 20) +
