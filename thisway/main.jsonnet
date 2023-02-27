@@ -89,7 +89,7 @@ local l = import 'lib.libsonnet';
   ),
 
   k.user('admin', {
-    app: 'external-sso',
+    app: 'thiswayglobal',
   }),
 ]
 +
