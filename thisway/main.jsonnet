@@ -25,8 +25,10 @@ local l = import 'lib.libsonnet';
       hashicorp.var('keycloak_endpoint', 'https://' + argo.config.env.keycloak.domain),
       hashicorp.var('keycloak_user', 'aaa'),  //TODO
       hashicorp.var('keycloak_pass', 'aaa'),
-      hashicorp.var('keycloak_realm', 'aaa'),
+      hashicorp.var('keycloak_realm', 'thiswayglobal'),
+      hashicorp.var('keycloak_client', 'thiswayglobal-ai4jobs'),
       hashicorp.var('keycloak_client_secret', 'aaa'),
+      hashicorp.var('open_search_endpoint', argo.config.open_search_endpoint),
     ],
     outputs=[
       hashicorp.output('config'),
