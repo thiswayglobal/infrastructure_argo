@@ -2,9 +2,8 @@
   apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
   kind: 'KeycloakClient',
   metadata: {
-    name: name,
+    name: 'thiswayglobal-ai4jobs',
     namespace: 'keycloak-operator',
-    labels: labels,
   },
   spec: {
     realmSelector: {
