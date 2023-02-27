@@ -66,39 +66,37 @@
         'microprofile-jwt',
       ],
       protocol: 'openid-connect',
-
-    },
-    protocolMappers: [
-      {
-        //id: '705e30c7-f94d-43e7-ad34-817d9830c6fe',
-        name: 'rvl_client_key',
-        protocol: 'openid-connect',
-        protocolMapper: 'oidc-usermodel-attribute-mapper',
-        consentRequired: false,
-        config: {
-          'userinfo.token.claim': 'true',
-          'user.attribute': 'rvl_client_key',
-          'id.token.claim': 'true',
-          'access.token.claim': 'true',
-          'claim.name': 'rvl_client_key',
-          'jsonType.label': 'String',
+      protocolMappers: [
+        {
+          //id: '705e30c7-f94d-43e7-ad34-817d9830c6fe',
+          name: 'rvl_client_key',
+          protocol: 'openid-connect',
+          protocolMapper: 'oidc-usermodel-attribute-mapper',
+          consentRequired: false,
+          config: {
+            'userinfo.token.claim': 'true',
+            'user.attribute': 'rvl_client_key',
+            'id.token.claim': 'true',
+            'access.token.claim': 'true',
+            'claim.name': 'rvl_client_key',
+            'jsonType.label': 'String',
+          },
         },
-      },
-    ],
-    publicClient: true,
-    redirectUris: [
-      'https://dev-api.ai4jobs.info/*',
-      'https://thisway--installdev.lightning.force.com/apex/TWG__AdminTabAuthenticate',
-      'http://dev-api.ai4jobs.info/*',
-    ],
-    rootUrl: 'https://dev-api.ai4jobs.info/*',
-    secret: 'ai4jobs',
-    serviceAccountsEnabled: false,
-    standardFlowEnabled: true,
-    surrogateAuthRequired: false,
-    webOrigins: [
-      'https://dev-api.ai4jobs.info',
-    ],
-
+      ],
+      publicClient: true,
+      redirectUris: [
+        'https://dev-api.ai4jobs.info/*',
+        'https://thisway--installdev.lightning.force.com/apex/TWG__AdminTabAuthenticate',
+        'http://dev-api.ai4jobs.info/*',
+      ],
+      rootUrl: 'https://dev-api.ai4jobs.info/*',
+      secret: 'ai4jobs',
+      serviceAccountsEnabled: false,
+      standardFlowEnabled: true,
+      surrogateAuthRequired: false,
+      webOrigins: [
+        'https://dev-api.ai4jobs.info',
+      ],
+    },
   },
 }
