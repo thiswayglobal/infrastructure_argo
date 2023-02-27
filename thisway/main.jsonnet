@@ -115,7 +115,7 @@ local l = import 'lib.libsonnet';
       spec: {
         user: {
           credentials: {
-            value: '{{ (index . 1).data.password | b64dec}}',
+            value: '{{ printf "%s" (index . 1).data.password | b64dec }}',
           },
         },
       },
