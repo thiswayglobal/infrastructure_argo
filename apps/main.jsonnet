@@ -373,7 +373,7 @@ local e = import '../libs/env.libsonnet';
         group: '*',
         kind: 'KeycloakUser',
         jqPathExpressions: [
-          '.spec.user.credentials[].value',
+          '.spec.user.credentials[]',
         ],
       },
     ]
