@@ -363,6 +363,20 @@ local e = import '../libs/env.libsonnet';
 
   argo.app('demo-app-base', 'demo-app-base', 'demo-app-base', wave=30),
 
-  argo.app('thisway', 'thisway', 'thisway', wave=30),
+  argo.app(
+    'thisway',
+    'thisway',
+    'thisway',
+    wave=30,
+    ignoreDifferences=[
+      {
+        group: '*',
+        kind: 'KeycloakUser',
+        jqPathExpressions: [
+          '.spec.user.credentials[*].value',
+        ],
+      },
+    ]
+  ),
 
 ]
