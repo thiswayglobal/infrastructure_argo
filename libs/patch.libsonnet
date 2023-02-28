@@ -16,7 +16,7 @@
       patches: {
         patch1: {
           targetObjectRef: target,
-          patchTemplate: std.strReplace(std.strReplace(std.strReplace(std.manifestYamlDoc(patch, quote_keys=false), '"{{', '{{'), '}}"', '}}'), '\\"%s\\"', '%s'),
+          patchTemplate: std.strReplace(std.strReplace(std.strReplace(std.manifestYamlDoc(patch, quote_keys=false), '"{{', '{{'), '}}"', '}}'), '\\"%s\\"', '"%s"'),
           patchType: 'application/strategic-merge-patch+json',
           sourceObjectRefs: sources,
         },
