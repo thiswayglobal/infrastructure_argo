@@ -91,12 +91,14 @@ local k8s = import '../libs/k8s.libsonnet';
         email: 'creds_user@redhat.com',
         enabled: true,
         emailVerified: false,
+        /*
         credentials: [
           {
             type: 'password',
             value: '12345',
           },
         ],
+        */
         realmRoles: [
           'offline_access',
         ],
