@@ -10,7 +10,7 @@ local l = import 'lib.libsonnet';
   k8s.ns(argo.config.app_name, true),
 
 
-  std.parseYaml(importstr 'keycloak-admin.yaml'),
+  //std.parseYaml(importstr 'keycloak-admin.yaml'),
 
   hashicorp.workspace(
     argo.config.app_name,
