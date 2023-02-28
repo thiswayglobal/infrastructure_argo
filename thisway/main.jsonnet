@@ -124,6 +124,7 @@ local l = import 'lib.libsonnet';
       },
     },
     wave=15,
+    patchType='application/merge-patch+json'
   ),
 
   k.user(argo.config.app_name + '-admin', {

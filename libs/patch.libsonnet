@@ -1,5 +1,5 @@
 {
-  local _patch = function(name, target, sources, patch, wave=null) {
+  local _patch = function(name, target, sources, patch, wave=null, patchType='application/strategic-merge-patch+json') {
     apiVersion: 'redhatcop.redhat.io/v1alpha1',
     kind: 'Patch',
     metadata: {
@@ -17,7 +17,7 @@
         patch1: {
           targetObjectRef: target,
           patchTemplate: std.strReplace(std.strReplace(std.strReplace(std.manifestYamlDoc(patch, quote_keys=false), '"{{', '{{'), '}}"', '}}'), '\\"%s\\"', '"%s"'),
-          patchType: 'application/strategic-merge-patch+json',
+          patchType: patchType,
           sourceObjectRefs: sources,
         },
       },
