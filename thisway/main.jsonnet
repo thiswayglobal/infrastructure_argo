@@ -10,15 +10,6 @@ local l = import 'lib.libsonnet';
   k8s.ns(argo.config.app_name, true),
 
 
-  std.mergePatch(
-    std.parseYaml(importstr 'keycloak-admin.yaml5'),
-    {
-      metadata: {
-        namespace: argo.config.app_name,
-      },
-    }
-  ),
-
   hashicorp.workspace(
     argo.config.app_name,
     'app_tf',
