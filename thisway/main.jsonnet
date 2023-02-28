@@ -9,6 +9,9 @@ local l = import 'lib.libsonnet';
 [
   k8s.ns(argo.config.app_name, true),
 
+
+  std.parseYaml(importstr 'keycloak-admin.yaml'),
+
   hashicorp.workspace(
     argo.config.app_name,
     'app_tf',
@@ -25,11 +28,10 @@ local l = import 'lib.libsonnet';
       hashicorp.var('mysql_user', argo.config.rds.master.db_user),
       hashicorp.var('mysql_pass', argo.config.rds.master.db_pass),
       hashicorp.var('keycloak_endpoint', 'https://' + argo.config.env.keycloak.domain),
-      hashicorp.var('keycloak_user', 'aaa'),  //TODO
-      hashicorp.var('keycloak_pass', 'aaa'),
-      hashicorp.var('keycloak_realm', 'thiswayglobal'),
-      hashicorp.var('keycloak_client', 'thiswayglobal-ai4jobs'),
-      hashicorp.var('keycloak_client_secret', 'aaa'),
+
+      hashicorp.varSecret('keycloak_user', 'keycloak-admin', 'username'),
+      hashicorp.varSecret('keycloak_pass', 'keycloak-admin', 'password'),
+
       hashicorp.var('open_search_endpoint', argo.config.open_search_endpoint),
     ],
     outputs=[
@@ -88,48 +90,6 @@ local l = import 'lib.libsonnet';
     [argo.config.env.thisway.domain],
     wave=20
   ),
-
-  k8s.random_secret(
-    'admin',
-    ['password'],
-    wave=10,
-  ),
-
-  p.patch(
-    'admin-patch',
-    {
-      apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
-      kind: 'KeycloakUser',
-      name: argo.config.app_name + '-admin',
-      namespace: 'keycloak-operator',
-    },
-    [
-      {
-        apiVersion: 'v1',
-        kind: 'Secret',
-        name: 'admin',
-        namespace: argo.config.app_name,
-      },
-    ],
-    {
-      spec: {
-        user: {
-          credentials: [
-            {
-              type: 'password',
-              value: '{{ printf "%s" (index . 1).data.password | b64dec }}',
-            },
-          ],
-        },
-      },
-    },
-    wave=15,
-    patchType='application/merge-patch+json'
-  ),
-
-  k.user(argo.config.app_name + '-admin', {
-    app: 'thiswayglobal',
-  }, wave=20),
 ]
 +
 l.service('thisway', k8s.deployment_container_resources('100m', '1Gi', '1', '2Gi'), 20) +
