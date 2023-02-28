@@ -98,17 +98,17 @@ local l = import 'lib.libsonnet';
   p.patch(
     'admin-patch',
     {
-      apiVersion: 'v1',
-      kind: 'Secret',
-      name: 'admin',
-      namespace: argo.config.app_name,
+      apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
+      kind: 'KeycloakUser',
+      name: argo.config.app_name + '-admin',
+      namespace: 'keycloak-operator',
     },
     [
       {
-        apiVersion: 'legacy.k8s.keycloak.org/v1alpha1',
-        kind: 'KeycloakUser',
-        name: argo.config.app_name + '-admin',
-        namespace: 'keycloak-operator',
+        apiVersion: 'v1',
+        kind: 'Secret',
+        name: 'admin',
+        namespace: argo.config.app_name,
       },
     ],
     {
