@@ -21,4 +21,36 @@ local k8s = import '../libs/k8s.libsonnet';
   g.dashboard('istio-workload', importstr 'dashboards/istio-workload.libsonnet', wave=20),
   g.dashboard('k8s-pods-resources', importstr 'dashboards/k8s-pods-resources.libsonnet', wave=20),
   g.dashboard('k8s', importstr 'dashboards/k8s.libsonnet', wave=20),
+
+  p.patch(
+    'github-secret',
+    {
+      apiVersion: 'integreatly.org/v1alpha1',
+      kind: 'Grafana',
+      name: 'grafana',
+      namespace: 'grafana',
+    },
+    [
+      {
+        apiVersion: 'v1',
+        kind: 'Secret',
+        name: 'github-grafana',
+        namespace: 'grafana',
+      },
+    ],
+    {
+      spec: {
+        config: {
+          'auth.github': [
+            {
+              client_id: '{{ printf "%s" (index . 1).data.github_client_id | b64dec }}',
+              client_secret: '{{ printf "%s" (index . 1).data.github_client_secret | b64dec }}',
+            },
+          ],
+        },
+      },
+    },
+    wave=30,
+    patchType='application/merge-patch+json'
+  ),
 ]

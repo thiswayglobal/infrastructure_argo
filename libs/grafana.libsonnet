@@ -76,11 +76,11 @@ local argo = import '../libs/argo.libsonnet';
         'auth.anonymous': {
           enabled: false,
         },
-        [if std.objectHas(argo.config.env.grafana, 'github_client_id') then 'auth.github']: {
+        [if std.objectHas(argo.config.env.grafana, 'organization') then 'auth.github']: {
           enabled: true,
           allow_sign_up: true,
-          client_id: argo.config.env.grafana.github_client_id,
-          client_secret: argo.config.env.grafana.github_client_secret,
+          client_id: 'aaa',
+          client_secret: 'aaa',
           scopes: 'user:email,read:org',
           auth_url: 'https://github.com/login/oauth/authorize',
           token_url: 'https://github.com/login/oauth/access_token',
