@@ -226,7 +226,7 @@ local e = import '../libs/env.libsonnet';
         group: '*',
         kind: 'Grafana',
         jqPathExpressions: [
-          '.spec.config["auth.github"].github_client_secret',
+          '.spec.config["auth.github"].client_secret',
         ],
       },
     ],
