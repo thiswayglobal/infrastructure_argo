@@ -42,12 +42,10 @@ local p = import '../libs/patch.libsonnet';
     {
       spec: {
         config: {
-          'auth.github': [
-            {
-              client_id: '{{ printf "%s" (index . 1).data.github_client_id | b64dec }}',
-              client_secret: '{{ printf "%s" (index . 1).data.github_client_secret | b64dec }}',
-            },
-          ],
+          'auth.github': {
+            client_id: '{{ printf "%s" (index . 1).data.github_client_id | b64dec }}',
+            client_secret: '{{ printf "%s" (index . 1).data.github_client_secret | b64dec }}',
+          },
         },
       },
     },
