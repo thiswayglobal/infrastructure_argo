@@ -214,6 +214,22 @@ local e = import '../libs/env.libsonnet';
     'grafana',
     'grafana',
     wave=20,
+    ignoreDifferences=[
+      {
+        group: '*',
+        kind: 'Grafana',
+        jqPathExpressions: [
+          '.spec.config["auth.github"].client_id',
+        ],
+      },
+      {
+        group: '*',
+        kind: 'Grafana',
+        jqPathExpressions: [
+          '.spec.config["auth.github"].github_client_secret',
+        ],
+      },
+    ],
   ),
 
   argo.appKustomize('prometheus-operator-crds',
