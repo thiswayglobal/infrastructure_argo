@@ -2,6 +2,7 @@ local argo = import '../libs/argo.libsonnet';
 local g = import '../libs/grafana.libsonnet';
 local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
+local p = import '../libs/patch.libsonnet';
 
 [
   k8s.ns('grafana', true, wave=10),
