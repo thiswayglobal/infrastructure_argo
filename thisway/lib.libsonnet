@@ -30,7 +30,7 @@ local k8s = import '../libs/k8s.libsonnet';
           volumeMounts=[
             {
               name: 'config',
-              mountPath: '/META_INF/resources/application.yaml',
+              mountPath: '/BOOT-INF/classes/application.yml',
               subPath: 'config',
             },
           ],
