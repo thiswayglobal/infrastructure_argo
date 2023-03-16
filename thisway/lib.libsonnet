@@ -28,7 +28,6 @@ local k8s = import '../libs/k8s.libsonnet';
           //command=['/bin/bash', '-c', '--'],
           //args=['while true; do sleep 30; done;'],
           args=if arg != null then [arg] else ['/' + name],
-          /*
           volumeMounts=[
           {
             name: 'config',
@@ -41,7 +40,6 @@ local k8s = import '../libs/k8s.libsonnet';
             subPath: 'config',
           },
           ],
-          */
           resources=resources,
         ),
       ],
