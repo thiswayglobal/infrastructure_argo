@@ -75,11 +75,11 @@ local l = import 'lib.libsonnet';
           'apps',
         ],
         resources: [
+          'endpoints',
           'pods',
           'nodes',
           'services',
-          'endpoints',
-          'secrets',
+          'statefulsets',
         ],
         verbs: [
           'get',
