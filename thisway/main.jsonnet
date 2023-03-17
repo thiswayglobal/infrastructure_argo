@@ -66,7 +66,46 @@ local l = import 'lib.libsonnet';
     ],
     wave=10
   ),
+  k8s.cluster_role(
+    'hazelcast-' + argo.config.app_name,
+    [
+      {
+        apiGroups: [
+          '',
+          'apps',
+        ],
+        resources: [
+          'pods',
+          'nodes',
+          'services',
+          'endpoints',
+          'secrets',
+        ],
+        verbs: [
+          'get',
+          'list',
+          'watch',
+        ],
+      },
+      [
+        {
+          apiGroups: [
+            'discovery.k8s.io',
+          ],
+          resources: [
+            'endpointslices',
+          ],
+          verbs: [
+            'get',
+            'list',
+          ],
+        },
+      ],
+    ],
+    wave=10
+  ),
   k8s.roleBinding('namespace-reader', 'namespace-reader', 'app', wave=20),
+  k8s.clusterRoleBinding('hazelcast-' + argo.config.app_name, 'hazelcast-' + argo.config.app_name, 'app', wave=20),
 
   istio.virtualService(
     'vs',
