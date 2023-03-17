@@ -87,20 +87,18 @@ local l = import 'lib.libsonnet';
           'watch',
         ],
       },
-      [
-        {
-          apiGroups: [
-            'discovery.k8s.io',
-          ],
-          resources: [
-            'endpointslices',
-          ],
-          verbs: [
-            'get',
-            'list',
-          ],
-        },
-      ],
+      {
+        apiGroups: [
+          'discovery.k8s.io',
+        ],
+        resources: [
+          'endpointslices',
+        ],
+        verbs: [
+          'get',
+          'list',
+        ],
+      },
     ],
     wave=10
   ),
