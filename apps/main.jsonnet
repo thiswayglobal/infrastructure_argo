@@ -149,7 +149,7 @@ local e = import '../libs/env.libsonnet';
       argo.var('resources.limits.cpu', '300m'),
       argo.var('resources.limits.memory', '256Mi'),
       argo.var('resources.requests.cpu', '10m'),
-      argo.var('resources.requests.memory', '128m'),
+      argo.var('resources.requests.memory', '128Mi'),
     ],
     wave=10
   ),
