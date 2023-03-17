@@ -46,7 +46,7 @@ local k8s = import '../libs/k8s.libsonnet';
       podsAnnotations={
         'prometheus.io/scrape': 'true',
         'prometheus.io/path': '/actuator/prometheus',
-        'prometheus.io/port': '8081',
+        'prometheus.io/port': '8085',
       },
       volumes=[
         {
@@ -66,7 +66,6 @@ local k8s = import '../libs/k8s.libsonnet';
       [
         k8s.service_port('app', 80, 'app'),
         k8s.service_port('hazelcast', 5701, 'hazelcast'),
-        k8s.service_port('prometheus', 8081, 'prometheus'),
       ],
       wave=20
     ),
