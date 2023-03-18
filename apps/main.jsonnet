@@ -357,7 +357,7 @@ local e = import '../libs/env.libsonnet';
     'keycloak',
     'keycloak',
     'keycloak',
-    wave=30,
+    wave=22,
     ignoreDifferences=[
       {
         group: '*',
