@@ -4,12 +4,7 @@ local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
 local prom = import '../libs/prometheus.libsonnet';
 
-local demo_app = [
-  'demo-app-' + name + '.dev-ai4jobs.com'
-  for name in std.objectFields(argo.config.env.demo_app.environments)
-];
-
-local all_domains = argo.config.env.domains + ['grafana.' + argo.config.domain] + demo_app;
+local all_domains = argo.config.env.domains + ['grafana.' + argo.config.domain];
 [
   cm.selfSignedClusterIssuer(wave=20),
 
