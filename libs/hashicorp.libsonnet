@@ -51,7 +51,7 @@ local k8s = import '../libs/k8s.libsonnet';
   },
   varSecret:: _varSecret,
 
-  local _workspace = function(name, source, vars=[], region='us-east-1', outputs=[], sshKeyID='tf_modules', wave=null) {
+  local _workspace = function(name, source, vars=[], region=argo.config.region, outputs=[], sshKeyID='tf_modules', wave=null) {
     apiVersion: 'app.terraform.io/v1alpha1',
     kind: 'Workspace',
     metadata: {
