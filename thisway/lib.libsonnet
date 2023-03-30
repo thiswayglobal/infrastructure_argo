@@ -32,12 +32,13 @@ local k8s = import '../libs/k8s.libsonnet';
             {
               name: 'config',
               mountPath: '/BOOT-INF/classes/application.yml',
-              subPath: 'config',
+              subPath: name,
             },
+
             {
               name: 'config',
               mountPath: '/app/resources/application.yml',
-              subPath: 'config',
+              subPath: name,
             },
           ],
           resources=resources,
