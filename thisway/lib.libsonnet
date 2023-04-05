@@ -8,7 +8,7 @@ local k8s = import '../libs/k8s.libsonnet';
       name,
       [
         k8s.deployment_container(
-          argo.config.env.thisway.image,
+          argo.config.env.thisway.images[name],
           name,
           [
             k8s.deployment_container_port('hazelcast', 5701, 'TCP'),
