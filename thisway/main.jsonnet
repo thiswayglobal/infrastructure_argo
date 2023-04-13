@@ -143,4 +143,6 @@ l.service('ingest-individual', k8s.deployment_container_resources('500m', '1Gi',
 l.service('ingest-job', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
 l.service('revsearch', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20, arg='search') +
 l.service('revealsvc', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
-l.service('score', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20)
+l.service('score', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
+l.service('public', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
+l.service('reveal', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20)
