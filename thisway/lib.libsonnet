@@ -3,7 +3,7 @@ local istio = import '../libs/istio.libsonnet';
 local k8s = import '../libs/k8s.libsonnet';
 
 {
-  local _service = function(name, resources, wave, arg=null) [
+  local _service = function(name, resources, wave, arg=null, replicas=1) [
     k8s.deployment(
       name,
       [
@@ -58,7 +58,8 @@ local k8s = import '../libs/k8s.libsonnet';
         },
       ],
       sa='app',
-      wave=wave
+      wave=wave,
+      replicas=replicas
     ),
 
     k8s.service(
