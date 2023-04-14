@@ -26,7 +26,7 @@ local l = import 'lib.libsonnet';
       hashicorp.var('mysql_user', argo.config.rds.master.db_user),
       hashicorp.var('mysql_pass', argo.config.rds.master.db_pass),
       hashicorp.var('keycloak_endpoint_external', 'https://' + argo.config.env.keycloak.domain),
-      hashicorp.var('keycloak_endpoint_internal', 'https://test1-service.keycloak-operator.svc:8080'),
+      hashicorp.var('keycloak_endpoint_internal', 'http://test1-service.keycloak-operator.svc:8080'),
       hashicorp.var('app_endpoint', 'https://' + argo.config.env.thisway.domain),
 
       hashicorp.var('mysql57_endpoint', argo.config.rds57.master.db_host),
