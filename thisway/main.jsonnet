@@ -129,6 +129,16 @@ local l = import 'lib.libsonnet';
     [argo.config.env.thisway.domain],
     wave=20
   ),
+
+  istio.virtualService(
+    'keycloak',
+    [
+      istio.virtualServiceRule(['/oauth/token'], 'test1-service', 8080, rewritePrefix='/auth/realms/thiswayglobal/protocol/openid-connect/token'),
+    ],
+    [argo.config.env.thisway.domain],
+    namespace='keycloak-operator',
+    wave=20
+  ),
 ]
 +
 l.service('thisway', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
