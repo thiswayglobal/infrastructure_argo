@@ -133,7 +133,7 @@ local l = import 'lib.libsonnet';
   istio.virtualService(
     'keycloak',
     [
-      istio.virtualServiceRule(['/oauth/token'], 'test1-service', 8080, rewritePrefix='/auth/realms/thiswayglobal/protocol/openid-connect/token'),
+      istio.virtualServiceRule(['/oauth/token'], 'test1-service', 8080, rewritePrefix='/auth/realms/' + argo.config.app_name + '/protocol/openid-connect/token'),
     ],
     [argo.config.env.thisway.domain],
     namespace='keycloak-operator',
