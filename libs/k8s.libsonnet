@@ -1,10 +1,11 @@
 {
-  local _service_port(name, port, target_port, protocol='TCP', nodePort=null) = {
+  local _service_port(name, port, target_port, protocol='TCP', nodePort=null, appProtocol=null) = {
     port: port,
     targetPort: target_port,
     protocol: protocol,
     name: name,
     [if nodePort != null then 'nodePort']: nodePort,
+    [if appProtocol != null then 'appProtocol']: appProtocol,
   },
   service_port:: _service_port,
 
