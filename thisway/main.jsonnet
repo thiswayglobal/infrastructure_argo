@@ -157,7 +157,7 @@ local l = import 'lib.libsonnet';
 ]
 +
 l.service('thisway', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
-l.service('ai4jobs', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20, replicas=2) +
+l.service('ai4jobs', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
 l.service('attract', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
 l.service('back-office', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
 l.service('data-export', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
