@@ -145,6 +145,7 @@ local l = import 'lib.libsonnet';
     namespace='keycloak-operator',
     wave=20
   ),
+  istio.telemetry(wave=30),
 ]
 +
 l.service('thisway', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
