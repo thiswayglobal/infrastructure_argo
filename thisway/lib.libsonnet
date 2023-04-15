@@ -71,7 +71,7 @@ local k8s = import '../libs/k8s.libsonnet';
       ],
       wave=20,
       labels={
-        //hzcluster: 'ai4jobs',
+        hzcluster: 'ai4jobs',
         name: name,
       },
     ),
