@@ -60,11 +60,6 @@ local k8s = import '../libs/k8s.libsonnet';
       sa='app',
       wave=wave,
       replicas=replicas,
-      /*
-      labels={
-        hazelcast: 'enabled',
-      },
-      */
     ),
 
     k8s.service(
