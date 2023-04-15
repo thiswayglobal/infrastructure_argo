@@ -114,16 +114,16 @@ local l = import 'lib.libsonnet';
   ),
   k8s.roleBinding('namespace-reader', 'namespace-reader', 'app', wave=20),
   k8s.clusterRoleBinding('hazelcast-' + argo.config.app_name, 'hazelcast-' + argo.config.app_name, 'app', argo.config.app_name, wave=20),
-
-  k8s.service(
-    'hazelcast',
-    { hazelcast: 'enabled' },
-    [
-      k8s.service_port('hazelcast', 5701, 'hazelcast'),
-    ],
-    clusterIp='None'
-  ),
-
+  /*
+    k8s.service(
+      'hazelcast',
+      { hazelcast: 'enabled' },
+      [
+        k8s.service_port('hazelcast', 5701, 'hazelcast'),
+      ],
+      clusterIp='None'
+    ),
+  */
   istio.virtualService(
     'vs',
     [
