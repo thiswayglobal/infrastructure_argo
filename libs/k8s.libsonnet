@@ -13,6 +13,7 @@
                  ports,
                  labels={},
                  type='ClusterIP',
+                 clusterIp=null,
                  annotations={},
                  external_dns=null,
                  namespace=null,
@@ -31,6 +32,7 @@
     },
     spec: {
       type: type,
+      [if clusterIp != null then 'clusterIP']: clusterIp,
       ports: ports,
       selector: selector,
     },
@@ -272,7 +274,7 @@
         metadata: {
           labels: {
             app: name,
-          },
+          } + labels,
           [if podsAnnotations != null || disableIstioProbes then 'annotations']: {
             [if disableIstioProbes then 'sidecar.istio.io/rewriteAppHTTPProbers']: 'false',
           } + if podsAnnotations != null then podsAnnotations else {},
