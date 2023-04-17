@@ -73,11 +73,6 @@ local k8s = import '../libs/k8s.libsonnet';
         //k8s.service_port('tcp-hazelcast', 5701, 'hazelcast', appProtocol='tcp'),
       ],
       wave=20,
-      /*
-      labels={
-        hzcluster: 'ai4jobs',
-      },
-      */
     ),
 
   ],

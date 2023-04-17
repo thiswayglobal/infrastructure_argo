@@ -7,7 +7,7 @@ local p = import '../libs/patch.libsonnet';
 local l = import 'lib.libsonnet';
 
 [
-  k8s.ns(argo.config.app_name, false),
+  k8s.ns(argo.config.app_name, true),
 
 
   hashicorp.workspace(
