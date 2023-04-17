@@ -60,19 +60,24 @@ local k8s = import '../libs/k8s.libsonnet';
       sa='app',
       wave=wave,
       replicas=replicas,
+      labels={
+        hazelcast: 'cluster',
+      },
     ),
 
     k8s.service(
       name,
       { app: name },
       [
-        //k8s.service_port('app', 80, 'app'),
-        k8s.service_port('tcp-hazelcast', 5701, 'hazelcast', appProtocol='tcp'),
+        k8s.service_port('app', 80, 'app'),
+        //k8s.service_port('tcp-hazelcast', 5701, 'hazelcast', appProtocol='tcp'),
       ],
       wave=20,
+      /*
       labels={
         hzcluster: 'ai4jobs',
       },
+      */
     ),
 
   ],
