@@ -36,7 +36,8 @@ local l = import 'lib.libsonnet';
       hashicorp.varSecret('keycloak_user', 'keycloak-admin', 'username'),
       hashicorp.varSecret('keycloak_pass', 'keycloak-admin', 'password'),
 
-      hashicorp.var('open_search_endpoint', argo.config.open_search_endpoint),
+      hashicorp.var('open_search_endpoint_discover', argo.config.open_search_endpoint_discover),
+      hashicorp.var('open_search_endpoint_reveal', argo.config.open_search_endpoint_reveal),
     ],
     outputs=[
       hashicorp.output('s3_arns'),
