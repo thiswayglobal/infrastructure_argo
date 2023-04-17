@@ -120,7 +120,7 @@ local l = import 'lib.libsonnet';
     'hazelcast',
     { hazelcast: 'cluster' },
     [
-      k8s.service_port('hazelcast', 5701, 'hazelcast', appProtocol='tcp'),
+      k8s.service_port('hazelcast', 5701, 'tcp-hazelcast', appProtocol='tcp'),
     ],
     clusterIp='None',
     labels={
