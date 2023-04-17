@@ -11,7 +11,7 @@ local k8s = import '../libs/k8s.libsonnet';
           argo.config.env.thisway.images[name],
           name,
           [
-            k8s.deployment_container_port('hazelcast', 5701, 'TCP'),
+            k8s.deployment_container_port('tcp-hazelcast', 5701, 'TCP'),
             k8s.deployment_container_port('app', 8080, 'TCP'),
             k8s.deployment_container_port('prometheus', 8085, 'TCP'),
           ],
