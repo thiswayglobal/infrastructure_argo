@@ -117,7 +117,7 @@ local l = import 'lib.libsonnet';
   k8s.clusterRoleBinding('hazelcast-' + argo.config.app_name, 'hazelcast-' + argo.config.app_name, 'app', argo.config.app_name, wave=20),
 
   k8s.service(
-    'hazelcast',
+    'ai4jobs',
     { hazelcast: 'cluster' },
     [
       k8s.service_port('tcp-hazelcast', 5701, 5701, appProtocol='tcp'),
