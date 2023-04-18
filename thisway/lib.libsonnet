@@ -70,7 +70,7 @@ local k8s = import '../libs/k8s.libsonnet';
       { app: name },
       [
         k8s.service_port('app', 80, 'app'),
-        k8s.service_port('tcp-hazelcast', 5701, 'tcp-hazelcast', appProtocol='tcp'),
+        //k8s.service_port('tcp-hazelcast', 5701, 'tcp-hazelcast', appProtocol='tcp'),
       ],
       wave=20,
     ),
