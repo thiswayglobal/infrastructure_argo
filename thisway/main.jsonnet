@@ -117,15 +117,12 @@ local l = import 'lib.libsonnet';
   k8s.clusterRoleBinding('hazelcast-' + argo.config.app_name, 'hazelcast-' + argo.config.app_name, 'app', argo.config.app_name, wave=20),
 
   k8s.service(
-    'ai4jobs',
+    'hazelcast-cluster',
     { hazelcast: 'cluster' },
     [
       k8s.service_port('tcp-hazelcast', 5701, 5701, appProtocol='tcp'),
     ],
     clusterIp='None',
-    labels={
-      hzcluster: 'ai4jobs',
-    },
   ),
 
   istio.virtualService(
@@ -161,7 +158,6 @@ local l = import 'lib.libsonnet';
   istio.telemetry(wave=30),
 ]
 +
-/*
 l.service('thisway', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
 l.service('ai4jobs', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
 l.service('attract', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
@@ -176,6 +172,6 @@ l.service('revsearch', k8s.deployment_container_resources('500m', '1Gi', '1', '3
 l.service('revealsvc', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
 l.service('score', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
 l.service('public', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
-l.service('reveal', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20)+
-*/
-l.service('template', k8s.deployment_container_resources('500m', '1Gi', '1', '1Gi'), 20, replicas=3)
+l.service('reveal', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20)
+
+//l.service('template', k8s.deployment_container_resources('500m', '1Gi', '1', '1Gi'), 20, replicas=3)
