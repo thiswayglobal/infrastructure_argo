@@ -163,7 +163,7 @@ l.service('thisway', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi
 //l.service('attract', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
 l.service('back-office', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20)
 //l.service('data-export', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
-//l.service('discover', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
+l.service('discover', k8s.deployment_container_resources('500m', '1Gi', '1', '3Gi'), 20) +
 //l.service('discsearch', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20, arg='search') +
 //l.service('ghio', k8s.deployment_container_resources('500m', '1Gi', '1', '2Gi'), 20) +
 //l.service('ingest-individual', k8s.deployment_container_resources('500m', '1Gi', '1', '4Gi'), 20) +
